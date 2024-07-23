@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final Object mLock = new Object();
 
-    // 下载出现Failed to connect to raw.githubusercontent.com时，可以换个下载链接测试，github的raw.githubusercontent.com目前不太稳定。
-//    private String mUrl = "https://raw.githubusercontent.com/jenly1314/AppUpdater/master/app/release/app-release.apk";
+    // If the download error "Failed to connect to raw.githubusercontent.com" appears, you can try another download link. GitHub's raw.githubusercontent.com is not very stable at present.
+    // private String mUrl = "https://raw.githubusercontent.com/jenly1314/AppUpdater/master/app/release/app-release.apk";
     private String mUrl = "https://gitlab.com/jenly1314/AppUpdater/-/raw/master/app/release/app-release.apk";
 
     private TextView tvProgress;
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 简单一键后台升级
+     * Simple one-click background upgrade
      */
     private void clickBtn1() {
         mAppUpdater = new AppUpdater(getContext(), mUrl);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 一键下载并监听
+     * One-click download and monitoring
      */
     private void clickBtn2() {
         UpdateConfig config = new UpdateConfig();
@@ -86,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onDownloading(boolean isDownloading) {
                         if (isDownloading) {
-                            showToast("已经在下载中,请勿重复下载。");
+                            showToast("Already downloading, please do not download again.");
                         } else {
-//                            showToast("开始下载…");
+                            // showToast("Start downloading...");
                             View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_progress, null);
                             tvProgress = view.findViewById(R.id.tvProgress);
                             progressBar = view.findViewById(R.id.progressBar);
@@ -111,19 +111,19 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFinish(File file) {
                         AppDialog.INSTANCE.dismissDialog();
-                        showToast("下载完成");
+                        showToast("Download completed");
                     }
 
                     @Override
                     public void onError(Exception e) {
                         AppDialog.INSTANCE.dismissDialog();
-                        showToast("下载失败");
+                        showToast("Download failed");
                     }
 
                     @Override
                     public void onCancel() {
                         AppDialog.INSTANCE.dismissDialog();
-                        showToast("取消下载");
+                        showToast("Cancel download");
                     }
                 });
         mAppUpdater.start();
@@ -144,13 +144,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 系统弹框升级
+     * System pop-up window upgrade
      */
     private void clickBtn3() {
         new AlertDialog.Builder(this)
-                .setTitle("发现新版本")
-                .setMessage("1、新增某某功能、\n2、修改某某问题、\n3、优化某某BUG、")
-                .setPositiveButton("升级", new DialogInterface.OnClickListener() {
+                .setTitle("New version found")
+                .setMessage("1. Add a new function, \n2. Fix a problem, \n3. Optimize a bug, ")
+                .setPositiveButton("Upgrade", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mAppUpdater = new AppUpdater.Builder(getContext())
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void onStart(String url) {
                                         super.onStart(url);
-                                        // 模仿系统自带的横幅通知效果
+                                        // Imitate the system's built-in banner notification effect
                                         AppDialogConfig config = new AppDialogConfig(getContext(), R.layout.dialog_heads_up);
                                         config.setStyleId(R.style.app_dialog_heads_up)
                                                 .setWidthRatio(.95f)
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onFinish(File file) {
-                                        showToast("下载完成");
+                                        showToast("Download completed");
                                     }
                                 });
                         mAppUpdater.start();
@@ -197,13 +197,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 简单弹框升级
+     * Simple pop-up window upgrade
      */
     private void clickBtn4() {
         AppDialogConfig config = new AppDialogConfig(getContext());
-        config.setTitle("简单弹框升级")
-                .setConfirm("升级")
-                .setContent("1、新增某某功能、\n2、修改某某问题、\n3、优化某某BUG、")
+        config.setTitle("Simple pop-up window upgrade")
+                .setConfirm("Upgrade")
+                .setContent("1. Add a new function, \n2. Fix a problem, \n3. Optimize a bug, ")
                 .setOnClickConfirm(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -216,14 +216,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 简单自定义弹框升级
+     * Simple custom pop-up window upgrade
      */
     private void clickBtn5() {
         AppDialogConfig config = new AppDialogConfig(getContext(), R.layout.dialog);
-        config.setConfirm("升级")
+        config.setConfirm("upgrade")
                 .setHideCancel(true)
-                .setTitle("简单自定义弹框升级")
-                .setContent("1、新增某某功能、\n2、修改某某问题、\n3、优化某某BUG、")
+                .setTitle("Simple custom pop-up window upgrade")
+                .setContent("1. Add a new function, \n2. Fix a problem, \n3. Optimize a bug, ")
                 .setOnClickConfirm(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -238,15 +238,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 自定义弹框，优先缓存升级
+     * Customize pop-up window, prioritize cache upgrade
      */
     private void clickBtn6() {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_custom, null);
 
         TextView tvTitle = view.findViewById(R.id.tvTitle);
-        tvTitle.setText("自定义弹框升级");
+        tvTitle.setText("Custom pop-up box upgrade");
         TextView tvContent = view.findViewById(R.id.tvContent);
-        tvContent.setText("1、新增某某功能、\n2、修改某某问题、\n3、优化某某BUG、");
+        tvContent.setText("1. Add a new function, \n2. Fix a problem, \n3. Optimize a bug, ");
 
         View btnCancel = view.findViewById(R.id.btnCancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -261,8 +261,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mAppUpdater = new AppUpdater.Builder(getContext())
                         .setUrl(mUrl)
-//                        .setApkMD5("3df5b1c1d2bbd01b4a7ddb3f2722ccca")// 支持MD5校验，如果缓存APK的MD5与此MD5相同，则直接取本地缓存安装，推荐使用MD5校验的方式
-                        .setVersionCode(BuildConfig.VERSION_CODE)// 支持versionCode校验，设置versionCode之后，新版本versionCode相同的apk只下载一次,优先取本地缓存,推荐使用MD5校验的方式
+                        // .setApkMD5("3df5b1c1d2bbd01b4a7ddb3f2722ccca")// Support MD5 verification. If the MD5 of the cached APK is the same as this MD5, the local cache will be directly used for installation. It is recommended to use MD5 verification
+                        .setVersionCode(BuildConfig.VERSION_CODE) // Support versionCode verification. After setting the versionCode, the new version of the apk with the same versionCode is only downloaded once, and the local cache is preferred. It is recommended to use MD5 verification
                         .setFilename("AppUpdater.apk")
                         .setVibrate(true)
                         .build();
@@ -275,49 +275,52 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 简单DialogFragment升级
+     * Simple DialogFragment upgrade
      */
     private void clickBtn7() {
         AppDialogConfig config = new AppDialogConfig(getContext());
-        config.setTitle("简单DialogFragment升级")
-                .setConfirm("升级")
-                .setContent("1、新增某某功能、\n2、修改某某问题、\n3、优化某某BUG、")
+        config.setTitle("Simple DialogFragment Upgrade")
+                .setConfirm("Upgrade")
+                .setContent("1. Add a new function, \n2. Fix a problem, \n3. Optimize a bug, ")
                 .setOnClickConfirm(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mAppUpdater = new AppUpdater.Builder(getContext())
                                 .setUrl(mUrl)
                                 .build();
-                        mAppUpdater.setHttpManager(OkHttpManager.getInstance()) // 使用OkHttp的实现进行下载
-                                .setUpdateCallback(new UpdateCallback() { // 更新回调
+                        mAppUpdater.setHttpManager(OkHttpManager.getInstance()) // Download using OkHttp implementation
+                                .setUpdateCallback(new UpdateCallback() { // Update callback
                                     @Override
                                     public void onDownloading(boolean isDownloading) {
-                                        // 下载中：isDownloading为true时，表示已经在下载，即之前已经启动了下载；为false时，表示当前未开始下载，即将开始下载
+                                        // Downloading: When isDownloading is true, it means that the download is already started,
+                                        // that is, the download has been started before; when it is false, it means that the
+                                        // download has not started yet and will start soon
                                     }
 
                                     @Override
                                     public void onStart(String url) {
-                                        // 开始下载
+                                        // start download
                                     }
 
                                     @Override
                                     public void onProgress(long progress, long total, boolean isChanged) {
-                                        // 下载进度更新：建议在isChanged为true时，才去更新界面的进度；因为实际的进度变化频率很高
+                                        // Download progress update: It is recommended to update the progress of the
+                                        // interface only when isChanged is true; because the actual progress changes frequently
                                     }
 
                                     @Override
                                     public void onFinish(File file) {
-                                        // 下载完成
+                                        // Download completed
                                     }
 
                                     @Override
                                     public void onError(Exception e) {
-                                        // 下载失败
+                                        // download failed
                                     }
 
                                     @Override
                                     public void onCancel() {
-                                        // 取消下载
+                                        // Cancel download
                                     }
                                 }).start();
 

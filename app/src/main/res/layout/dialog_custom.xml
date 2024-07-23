@@ -37,7 +37,7 @@
             android:paddingBottom="10dp"
             android:gravity="center"
             android:layout_weight="1"
-            android:text="升级"
+            android:text="@string/upgrade"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:background="@drawable/btn_confirm_selector"/>

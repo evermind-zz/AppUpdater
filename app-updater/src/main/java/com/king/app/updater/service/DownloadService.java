@@ -27,7 +27,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
 /**
- * 下载服务
+ * Download Service
  *
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
@@ -37,32 +37,32 @@ public class DownloadService extends Service {
      */
     private DownloadBinder mDownloadBinder = new DownloadBinder();
     /**
-     * 是否在下载，防止重复下载。
+     * Whether downloading is in progress to prevent duplicate downloads.
      */
     private boolean isDownloading;
     /**
-     * 失败后重新下载次数
+     * Number of re-downloads after failure
      */
     private int mCount = 0;
     /**
-     * Http管理器
+     * Http Manager
      */
     private IHttpManager mHttpManager;
     /**
-     * 更新回调
+     * Update callback
      */
     private UpdateCallback mUpdateCallback;
     /**
-     * 通知栏
+     * Notification bar
      */
     private INotification mNotification;
     /**
-     * APK文件
+     * APK file
      */
     private File mApkFile;
 
     /**
-     * 获取Context
+     * Get Context
      *
      * @return
      */
@@ -77,12 +77,12 @@ public class DownloadService extends Service {
             if (isStop) {
                 stopDownload();
             } else if (!isDownloading) {
-                // 是否实通过通知栏触发重复下载
+                // Whether to trigger repeated downloads through the notification bar
                 boolean isReDownload = intent.getBooleanExtra(Constants.KEY_RE_DOWNLOAD, false);
                 if (isReDownload) {
                     mCount++;
                 }
-                // 获取配置信息
+                // Get configuration information
                 UpdateConfig config = intent.getParcelableExtra(Constants.KEY_UPDATE_CONFIG);
 
                 startDownload(config);
@@ -99,7 +99,7 @@ public class DownloadService extends Service {
     //----------------------------------------
 
     /**
-     * 开始下载
+     * start download
      *
      * @param config
      */
@@ -108,7 +108,7 @@ public class DownloadService extends Service {
     }
 
     /**
-     * 开始下载
+     * start download
      *
      * @param config
      * @param httpManager
@@ -128,7 +128,7 @@ public class DownloadService extends Service {
         String path = config.getPath();
         String filename = config.getFilename();
 
-        // 如果保存路径为空则使用缓存路径
+        // If the save path is empty, use the cache path
         if (TextUtils.isEmpty(path)) {
             path = AppUtils.getApkCacheFilesDir(getContext());
         }
@@ -137,34 +137,34 @@ public class DownloadService extends Service {
             dirFile.mkdirs();
         }
 
-        // 如果文件名为空则使用路径
+        // If the file name is empty, use the path
         if (TextUtils.isEmpty(filename)) {
             filename = AppUtils.getAppFullName(getContext(), url, getResources().getString(R.string.app_name));
         }
 
         mApkFile = new File(path, filename);
-        // 文件是否存在
+        // Does the file exist?
         if (mApkFile.exists()) {
             long versionCode = config.getVersionCode();
             String apkMD5 = config.getApkMD5();
-            // 是否存在相同的apk
+            // Does the same apk exist?
             boolean isExistApk = false;
             if (!TextUtils.isEmpty(apkMD5)) {
-                // 如果存在MD5，则优先校验MD5
+                // If MD5 exists, check MD5 first
                 LogUtils.d(String.format(Locale.getDefault(), "UpdateConfig.apkMD5: %s", apkMD5));
                 isExistApk = AppUtils.verifyFileMD5(mApkFile, apkMD5);
             } else if (versionCode > 0) {
-                // 如果存在versionCode，则校验versionCode
+                // If versionCode exists, check versionCode
                 LogUtils.d(String.format(Locale.getDefault(), "UpdateConfig.versionCode: %d", versionCode));
                 isExistApk = AppUtils.apkExists(getContext(), versionCode, mApkFile);
             }
 
             if (isExistApk) {
-                // 本地已经存在要下载的APK
+                // The APK to be downloaded already exists locally
                 LogUtils.d("CacheFile: " + mApkFile);
                 if (config.isInstallApk()) {
                     String authority = config.getAuthority();
-                    // 如果为空则默认
+                    // If empty, the default
                     if (TextUtils.isEmpty(authority)) {
                         authority = AppUtils.getFileProviderAuthority(getContext());
                     }
@@ -177,7 +177,7 @@ public class DownloadService extends Service {
                 return;
             }
 
-            // 删除旧文件
+            // Delete old files
             mApkFile.delete();
         }
         LogUtils.d("File: " + mApkFile);
@@ -188,7 +188,7 @@ public class DownloadService extends Service {
     }
 
     /**
-     * 获取 IHttpManager
+     * Get IHttpManager
      *
      * @param httpManager {@link IHttpManager}
      * @return
@@ -205,7 +205,7 @@ public class DownloadService extends Service {
     }
 
     /**
-     * 获取 INotification
+     * Get INotification
      *
      * @param notification {@link INotification}
      * @return
@@ -222,7 +222,7 @@ public class DownloadService extends Service {
     }
 
     /**
-     * 停止下载
+     * Stop downloading
      */
     private void stopDownload() {
         if (mHttpManager != null) {
@@ -231,7 +231,7 @@ public class DownloadService extends Service {
     }
 
     /**
-     * 停止服务
+     * Out of service
      */
     private void stopService() {
         mCount = 0;
@@ -242,7 +242,7 @@ public class DownloadService extends Service {
     //---------------------------------------- DownloadCallback
 
     /**
-     * App下载回调接口
+     * App download callback interface
      */
     public static class AppDownloadCallback implements IHttpManager.DownloadCallback {
 
@@ -279,15 +279,15 @@ public class DownloadService extends Service {
         private INotification notification;
 
         /**
-         * 最后更新进度，用来降频刷新
+         * Last update progress, used to refresh at reduced frequency
          */
         private int lastProgress;
         /**
-         * 最后进度更新时间，用来降频刷新
+         * Last progress update time, used to reduce refresh rate
          */
         private long lastTime;
         /**
-         * APK文件
+         * APK file
          */
         private File apkFile;
 
@@ -314,7 +314,7 @@ public class DownloadService extends Service {
             this.isInstallApk = config.isInstallApk();
 
             this.authority = config.getAuthority();
-            // 如果为空则默认
+            // If empty, the default
             if (TextUtils.isEmpty(config.getAuthority())) {
                 authority = AppUtils.getFileProviderAuthority(context);
             }
@@ -323,7 +323,7 @@ public class DownloadService extends Service {
             this.isDeleteCancelFile = config.isDeleteCancelFile();
             this.isSupportCancelDownload = config.isSupportCancelDownload();
 
-            // 支持下载失败时重新下载，当重新下载次数不超过限制时才被允许
+            // Support re-downloading when download fails. Re-downloading is allowed only when the number of re-downloads does not exceed the limit.
             this.isReDownload = config.isReDownload() && downloadService.mCount < config.getReDownloads();
 
         }
@@ -346,13 +346,13 @@ public class DownloadService extends Service {
         public void onProgress(long progress, long total) {
             boolean isChanged = false;
             long curTime = System.currentTimeMillis();
-            // 降低更新频率
+            // Reduce the update frequency
             if (lastTime + Constants.MINIMUM_INTERVAL_MILLIS < curTime || progress == total) {
                 lastTime = curTime;
                 int progressPercentage = 0;
                 if (total > 0) {
                     progressPercentage = Math.round(progress * 1.0f / total * 100.0f);
-                    // 百分比改变了才更新
+                    // Update only when the percentage changes
                     if (progressPercentage != lastProgress) {
                         isChanged = true;
                         lastProgress = progressPercentage;
@@ -454,12 +454,12 @@ public class DownloadService extends Service {
     }
 
     /**
-     * 提供绑定服务的方式进行下载
+     * Provide binding service for download
      */
     public class DownloadBinder extends Binder {
 
         /**
-         * 开始下载
+         * start download
          *
          * @param config {@link UpdateConfig}
          */
@@ -468,7 +468,7 @@ public class DownloadService extends Service {
         }
 
         /**
-         * 开始下载
+         * start download
          *
          * @param config   {@link UpdateConfig}
          * @param callback {@link UpdateCallback}
@@ -478,7 +478,7 @@ public class DownloadService extends Service {
         }
 
         /**
-         * 开始下载
+         * start download
          *
          * @param config      {@link UpdateConfig}
          * @param httpManager {@link IHttpManager}
@@ -489,7 +489,7 @@ public class DownloadService extends Service {
         }
 
         /**
-         * 开始下载
+         * start download
          *
          * @param config       {@link UpdateConfig}
          * @param httpManager  {@link IHttpManager}

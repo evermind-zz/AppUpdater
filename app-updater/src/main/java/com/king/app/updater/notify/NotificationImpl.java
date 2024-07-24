@@ -8,7 +8,7 @@ import com.king.app.updater.util.NotificationUtils;
 import java.io.File;
 
 /**
- * {@link INotification} 的实现，如果需要自定义通知栏的布局，并对 {@link NotificationImpl} 的实现不满意，可通过自定义去实现一个 {@link INotification}
+ * Implementation of {@link INotification}. If you need to customize the layout of the notification bar and are not satisfied with the implementation of {@link NotificationImpl}, you can implement a {@link INotification} by customizing it.
  *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */

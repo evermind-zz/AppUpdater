@@ -18,7 +18,7 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * SSLSocketFactory 工具
+ * SSLSocketFactory Utility
  *
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
@@ -29,7 +29,7 @@ public final class SSLSocketFactoryUtils {
     }
 
     /**
-     * 创建 SSLSocketFactory
+     * Create an SSLSocketFactory
      *
      * @return {@link SSLSocketFactory}
      */
@@ -44,7 +44,7 @@ public final class SSLSocketFactoryUtils {
     }
 
     /**
-     * 信任所有 X509TrustManager
+     * Trust all X509TrustManagers
      *
      * @return {@link X509TrustManager}
      */
@@ -95,7 +95,7 @@ public final class SSLSocketFactoryUtils {
     }
 
     /**
-     * 创建一个信任所有证书的 X509TrustManager
+     * Create an X509TrustManager that trusts all certificates
      *
      * @return {@link X509TrustManager}
      */
@@ -104,7 +104,7 @@ public final class SSLSocketFactoryUtils {
     }
 
     /**
-     * 创建一个忽略校验信任所有主机地址的 HostnameVerifier
+     * Create a HostnameVerifier that ignores verification and trusts all host addresses
      *
      * @return {@link HostnameVerifier}
      */

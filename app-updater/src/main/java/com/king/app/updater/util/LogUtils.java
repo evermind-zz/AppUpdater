@@ -29,10 +29,10 @@ public class LogUtils {
 
     public static final String VERTICAL = "|";
 
-    /** 是否显示Log日志 */
+    /** Whether to display the Log log */
     private static boolean isShowLog = true;
 
-    /** Log日志优先权 */
+    /** Log priority */
     private static int priority = 1;
 
     /**
@@ -97,7 +97,7 @@ public class LogUtils {
     }
 
     /**
-     * 根据堆栈生成TAG
+     * Generate TAG based on the stack
      * @return TAG|className.methodName(fileName:lineNumber)
      */
     private static String generateTag(StackTraceElement caller) {
@@ -109,7 +109,7 @@ public class LogUtils {
     }
 
     /**
-     * 获取堆栈
+     * Get the stack
      * @param n
      * 		n=0		VMStack
      * 		n=1		Thread
@@ -123,7 +123,7 @@ public class LogUtils {
     }
 
     /**
-     * 获取调用方的堆栈TAG
+     * Get the caller's stack tag
      * @return
      */
     private static String getCallerStackLogTag(){

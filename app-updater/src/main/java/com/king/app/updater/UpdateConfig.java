@@ -12,100 +12,100 @@ import java.util.Map;
 import androidx.annotation.DrawableRes;
 
 /**
- * AppUpdater的配置信息
+ * AppUpdater configuration information
  *
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public class UpdateConfig implements Parcelable {
 
     /**
-     * APK下载的Url
+     * APK download URL
      */
     private String mUrl;
     /**
-     * 保存路径
+     * save route
      */
     private String mPath;
     /**
-     * 保存文件名
+     * Save file name
      */
     private String mFilename;
 
     /**
-     * 是否显示通知栏
+     * Whether to display the notification bar
      */
     private boolean isShowNotification = true;
     /**
-     * 下载完成后是否自动弹出安装
+     * Whether to automatically pop up the installation after downloading is complete
      */
     private boolean isInstallApk = true;
     /**
-     * 通知栏图标：默认取app图标
+     * Notification bar icon: default app icon
      */
     private int mNotificationIcon;
 
     /**
-     * 通知栏ID
+     * Notification bar ID
      */
     private int mNotificationId = Constants.DEFAULT_NOTIFICATION_ID;
 
     /**
-     * 通知栏渠道ID
+     * Notification channel ID
      */
     private String mChannelId;
     /**
-     * 通知栏渠道名称
+     * Notification channel name
      */
     private String mChannelName;
     /**
-     * 默认{@link Context#getPackageName() + ".AppUpdaterFileProvider"}
+     * Default {@link Context#getPackageName() + ".AppUpdaterFileProvider"}
      */
     private String mAuthority;
     /**
-     * 下载失败是否支持点击通知栏重新下载
+     * If the download fails, can you click the notification bar to re-download?
      */
     private boolean isReDownload = true;
     /**
-     * 下载失败后，最大重新下载次数
+     * Maximum number of re-downloads after a download fails
      */
     private int reDownloads = 3;
     /**
-     * 是否显示百分比
+     * Whether to display percentage
      */
     private boolean isShowPercentage = true;
 
     /**
-     * 是否震动提示，为true时使用通知默认震动
+     * Whether to vibrate the notification. If true, use the default vibration of the notification.
      */
     private boolean isVibrate;
 
     /**
-     * 是否铃声提示,为true时使用通知默认铃声
+     * Whether to ring a reminder, if true, use the default notification ringtone
      */
     private boolean isSound;
 
     /**
-     * 要下载的APK的versionCode
+     * The versionCode of the APK to download
      */
     private long versionCode = Constants.NONE;
 
     /**
-     * 请求头参数
+     * Request header parameters
      */
     private Map<String, String> mRequestProperty;
 
     /**
-     * 是否删除取消下载的文件
+     * Whether to delete the files that were canceled from downloading
      */
     private boolean isDeleteCancelFile = true;
 
     /**
-     * 是否支持通过删除通知栏来取消下载
+     * Whether to support canceling download by deleting the notification bar
      */
     private boolean isSupportCancelDownload = false;
 
     /**
-     * APK文件的MD5
+     * MD5 of APK file
      */
     private String apkMD5;
 
@@ -118,9 +118,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置APK下载地址
+     * Set APK download address
      *
-     * @param url 下载地址
+     * @param url download address
      */
     public void setUrl(String url) {
         this.mUrl = url;
@@ -131,11 +131,11 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置保存的路径，（建议使用默认，不做设置）
+     * Set the save path (it is recommended to use the default and not set it)
      *
-     * @param path 下载保存的文件路径
+     * @param path Download and save file path
      * @return
-     * @deprecated 因为适配Android Q的分区存储，所以此方法已弃用，不建议再使用
+     * @deprecated This method has been deprecated to adapt to Android Q's partition storage and is not recommended.
      */
     @Deprecated
     public void setPath(String path) {
@@ -147,9 +147,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置保存的文件名
+     * Set the saved file name
      *
-     * @param filename 下载的保存的apk文件名 （默认优先取url文件名）
+     * @param filename The downloaded and saved apk file name (the URL file name is preferred by default)
      */
     public void setFilename(String filename) {
         this.mFilename = filename;
@@ -160,9 +160,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置是否显示通知栏
+     * Set whether to display the notification bar
      *
-     * @param isShowNotification 是否显示通知栏 （默认true）
+     * @param isShowNotification whether to display the notification bar (default true)
      */
     public void setShowNotification(boolean isShowNotification) {
         this.isShowNotification = isShowNotification;
@@ -173,9 +173,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置通知通道ID
+     * Set the notification channel ID
      *
-     * @param channelId 通知通道ID（默认兼容O）
+     * @param channelId Notification channel ID (default compatible with O)
      */
     public void setChannelId(String channelId) {
         this.mChannelId = channelId;
@@ -186,18 +186,18 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置通知通道名称
+     * Set the notification channel name
      *
-     * @param channelName 通知通道名称（默认兼容O）
+     * @param channelName notification channel name (default compatible with O)
      */
     public void setChannelName(String channelName) {
         this.mChannelName = channelName;
     }
 
     /**
-     * 设置通知ID
+     * Set notification ID
      *
-     * @param notificationId 通知ID
+     * @param notificationId notification ID
      */
     public void setNotificationId(int notificationId) {
         this.mNotificationId = notificationId;
@@ -209,9 +209,9 @@ public class UpdateConfig implements Parcelable {
 
 
     /**
-     * 设置通知图标
+     * Set notification icon
      *
-     * @param icon 通知栏图标 默认取App的icon）
+     * @param icon The default notification bar icon is the App icon)
      */
     public void setNotificationIcon(@DrawableRes int icon) {
         this.mNotificationIcon = icon;
@@ -226,9 +226,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置下载完成后知否自动触发安装APK
+     * Set whether to automatically trigger the installation of APK after downloading
      *
-     * @param isInstallApk 下载完成后是否自动调用安装APK（默认true）
+     * @param isInstallApk Whether to automatically call the installation APK after downloading is complete (default true)
      */
     public void setInstallApk(boolean isInstallApk) {
         this.isInstallApk = isInstallApk;
@@ -239,9 +239,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置FileProvider的authority
+     * Set the FileProvider authority
      *
-     * @param authority FileProvider的authority（默认兼容N，默认值{@link Context#getPackageName() + ".AppUpdaterFileProvider"}）
+     * @param authority FileProvider authority (default compatible with N, default value {@link Context#getPackageName() + ".AppUpdaterFileProvider"})
      */
     public void setAuthority(String authority) {
         this.mAuthority = authority;
@@ -252,9 +252,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置下载时，通知栏是否显示下载百分比
+     * Set whether to display the download percentage in the notification bar when downloading
      *
-     * @param showPercentage 下载时通知栏是否显示百分比
+     * @param showPercentage Whether the notification bar displays the percentage when downloading
      */
     public void setShowPercentage(boolean showPercentage) {
         isShowPercentage = showPercentage;
@@ -265,9 +265,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置下载失败时，是否支持点击通知栏重新下载。与之相关联的方法{@link #setReDownloads(int)}
+     * Set whether to support re-downloading by clicking the notification bar when downloading fails. The associated method is {@link #setReDownloads(int)}
      *
-     * @param reDownload 下载失败时是否支持点击通知栏重新下载，默认true
+     * @param reDownload Whether to support clicking the notification bar to re-download when download fails, the default is true
      */
     public void setReDownload(boolean reDownload) {
         isReDownload = reDownload;
@@ -278,9 +278,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置下载失败时，最多重新下载次数。与之相关联的方法{@link #setReDownload(boolean)}
+     * Set the maximum number of re-downloads when download fails. The associated method is {@link #setReDownload(boolean)}
      *
-     * @param reDownloads 下载失败时是否支持点击通知栏重新下载，默认最多重新下载3次
+     * @param reDownloads Whether to support clicking the notification bar to re-download when download fails. The default is to re-download up to 3 times
      */
     public void setReDownloads(int reDownloads) {
         this.reDownloads = reDownloads;
@@ -291,9 +291,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置通知是否震动提示
+     * Set whether the notification should vibrate
      *
-     * @param vibrate 是否震动提示，为true时使用通知默认震动，Android O(8.0)以上设置，只有初次创建channel时有效，后续修改属性无效，想要重新有效需修改channelId或卸载App重装。
+     * @param vibrate indicates whether to vibrate the notification. When true, the default vibration is used. This setting is only valid for Android O (8.0) and above. It is only valid when the channel is first created. Subsequent modification of the attribute is invalid. To make it valid again, you need to modify the channelId or uninstall the App and reinstall it.
      */
     public void setVibrate(boolean vibrate) {
         isVibrate = vibrate;
@@ -304,9 +304,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置通知是否铃声提示
+     * Set whether notification ringtone should be used
      *
-     * @param sound 是否铃声提示，为true时使用通知默认铃声，Android O(8.0)以上设置，只有初次创建channel时有效，后续修改属性无效，想要重新有效需修改channelId或卸载App重装。
+     * @param sound indicates whether to use ringtone. If true, the default ringtone is used. This setting is only valid for Android O (8.0) and above. It is only valid when the channel is first created. Subsequent modification of the attribute will be invalid. To make it valid again, you need to modify the channelId or uninstall the App and reinstall it.
      */
     public void setSound(boolean sound) {
         isSound = sound;
@@ -317,12 +317,12 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置要下载APK的versionCode，用于优先取缓存时通过versionCode校验APK文件是否一致。
-     * 缓存校验目前支持两种方式，一种是通过versionCode校验，即{@link #setVersionCode(long)}；一种是文件MD5校验，即{@link #setApkMD5(String)}。推荐使用MD5校验方式
-     * 如果两种方式都设置了，则只校验MD5
+     * Set the versionCode of the APK to be downloaded. This is used to verify whether the APK files are consistent when the cache is first retrieved.
+     * Cache verification currently supports two methods: one is through versionCode verification, that is, {@link #setVersionCode(long)}; the other is file MD5 verification, that is, {@link #setApkMD5(String)}. It is recommended to use the MD5 verification method
+     * If both methods are set, only MD5 is verified
      *
-     * @param versionCode 为null表示不处理，默认不存在则下载，存在则重新下载。不为null时，表示会优先校验本地是否存在已下载版本号为versionCode的APK。
-     *                    如果存在则不会重新下载(AppUpdater会自动校验packageName一致性)，直接取本地APK，反之重新下载。
+     * @param versionCode is null, which means no processing. If it does not exist, it will be downloaded by default. If it exists, it will be re-downloaded. If it is not null, it means that the local APK with the downloaded version number versionCode will be checked first.
+     *                    If it exists, it will not be downloaded again (AppUpdater will automatically check the consistency of packageName). It will directly get the local APK. Otherwise, it will be downloaded again.
      */
     public void setVersionCode(long versionCode) {
         this.versionCode = versionCode;
@@ -333,11 +333,11 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置APK文件的MD5，用于优先取缓存时通过MD5校验文件APK是否一致。
-     * 缓存校验目前支持两种方式，一种是通过versionCode校验，即{@link #setVersionCode(long)}；一种是文件MD5校验，即{@link #setApkMD5(String)}。推荐使用MD5校验方式
-     * 如果两种方式都设置了，则只校验MD5
+     * Set the MD5 of the APK file to verify whether the file APK is consistent through MD5 when taking the cache first.
+     * Cache verification currently supports two methods: one is through versionCode verification, that is, {@link #setVersionCode(long)}; the other is file MD5 verification, that is, {@link #setApkMD5(String)}. It is recommended to use the MD5 verification method
+     * If both methods are set, only MD5 is verified
      *
-     * @param md5 为null表示不处理，如果设置了MD5，则缓存APK的MD5相同时，只下载一次，优先取本地缓存
+     * @param md5 is null, which means no processing. If MD5 is set, if the MD5 of the cached APK is the same, it will only be downloaded once, and the local cache will be given priority.
      */
     public void setApkMD5(String md5) {
         this.apkMD5 = md5;
@@ -348,7 +348,7 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 请求头添加参数
+     * Add parameters to the request header
      *
      * @param key
      * @param value
@@ -359,7 +359,7 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 请求头添加参数
+     * Add parameters to the request header
      *
      * @param headers
      */
@@ -379,9 +379,9 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 设置是否自动删除取消下载的文件
+     * Set whether to automatically delete the files that were canceled from downloading
      *
-     * @param deleteCancelFile 是否删除取消下载的文件（默认为：true）
+     * @param deleteCancelFile whether to delete the file that was canceled (default: true)
      */
     public void setDeleteCancelFile(boolean deleteCancelFile) {
         isDeleteCancelFile = deleteCancelFile;
@@ -393,11 +393,11 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 是否支持通过删除通知栏来取消下载（默认为：false）
+     * Whether to support canceling downloads by removing the notification bar (default: false)
      *
      * @param cancelDownload
      * @return
-     * @deprecated 此方法已标记为废弃，后续可能会删除；请使用 {@link #setSupportCancelDownload(boolean)}
+     * @deprecated This method has been marked as deprecated and may be deleted later; please use {@link #setSupportCancelDownload(boolean)}
      */
     @Deprecated
     public void setCancelDownload(boolean cancelDownload) {
@@ -405,7 +405,7 @@ public class UpdateConfig implements Parcelable {
     }
 
     /**
-     * 是否支持通过删除通知栏来取消下载（默认为：false）
+     * Whether to support canceling downloads by removing the notification bar (default: false)
      *
      * @param supportCancelDownload
      */

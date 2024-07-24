@@ -26,29 +26,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
- * AppUpdater：一个专注于App更新，一键傻瓜式集成App版本升级的轻量开源库
+ * AppUpdater: A lightweight open source library that focuses on App updates and integrates App version upgrades in a one-click fool-proof manner
  *
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public class AppUpdater {
     /**
-     * {@link #mContext}不强制要求是{@link Activity}，但能传{@link Activity}尽量传。AppUpdater本应该只专注于App更新，尽量不涉及动态权限相关的处理。如果mContext传的是{@link Activity}，则默认会校验一次动态权限。
+     * {@link #mContext} is not required to be {@link Activity}, but it is recommended to pass {@link Activity} whenever possible. AppUpdater should only focus on App updates and try not to involve dynamic permission-related processing. If mContext passes {@link Activity}, dynamic permissions will be checked once by default.
      */
     private Context mContext;
     /**
-     * AppUpdater的配置信息
+     * AppUpdater configuration information
      */
     private UpdateConfig mConfig;
     /**
-     * 更新回调
+     * Update callback
      */
     private UpdateCallback mCallback;
     /**
-     * http管理接口，可自定义实现。如：使用okHttp
+     * http management interface, which can be implemented by your own custom interface. For example, using okHttp
      */
     private IHttpManager mHttpManager;
     /**
-     * 通知栏：如果当前的通知栏的布局不满足你的需求，可通过参考 {@link NotificationImpl} 去自定义实现一个 {@link INotification}
+     * Notification bar: If the current notification bar layout does not meet your needs, you can refer to {@link NotificationImpl} to customize a {@link INotification}
      */
     private INotification mNotification;
 
@@ -58,7 +58,7 @@ public class AppUpdater {
     private ServiceConnection mServiceConnection;
 
     /**
-     * 构造
+     * Construction
      *
      * @param context {@link Context}
      * @param config  {@link UpdateConfig}
@@ -69,10 +69,10 @@ public class AppUpdater {
     }
 
     /**
-     * 构造
+     * Construction
      *
      * @param context {@link Context}
-     * @param url     下载地址
+     * @param url     download address
      */
     public AppUpdater(@NonNull Context context, @NonNull String url) {
         this.mContext = context;
@@ -81,9 +81,9 @@ public class AppUpdater {
     }
 
     /**
-     * 设置下载更新进度回调
+     * Set download update progress callback
      *
-     * @param callback 更新回调
+     * @param callback update callback
      * @return
      */
     public AppUpdater setUpdateCallback(@Nullable UpdateCallback callback) {
@@ -92,12 +92,12 @@ public class AppUpdater {
     }
 
     /**
-     * 设置一个 {@link IHttpManager}
+     * Set up a {@link IHttpManager}
      *
-     * @param httpManager AppUpdater内置提供{@link HttpManager} 和 {@link OkHttpManager}两种实现。
-     *                    如果不设置，将默认使用{@link HttpManager},你也可以使用{@link OkHttpManager}或自己去实现一个
-     *                    {@link IHttpManager}。
-     *                    当使用{@link OkHttpManager}时，必需依赖okhttp库
+     * @param httpManager AppUpdater provides two built-in implementations: {@link HttpManager} and {@link OkHttpManager}.
+     *                    If not set, {@link HttpManager} will be used by default. You can also use {@link OkHttpManager} or implement one yourself
+     *                    {@link IHttpManager}.
+     *                    When using {@link OkHttpManager}, you must rely on the okhttp library
      * @return
      */
     public AppUpdater setHttpManager(@Nullable IHttpManager httpManager) {
@@ -106,9 +106,9 @@ public class AppUpdater {
     }
 
     /**
-     * 设置一个 {@link INotification}
+     * Set a {@link INotification}
      *
-     * @param notification 如果当前的通知栏的布局不满足你的需求，可通过参考 {@link NotificationImpl} 去自定义实现一个 {@link INotification}
+     * @param notification If the current notification bar layout does not meet your needs, you can refer to {@link NotificationImpl} to customize a {@link INotification}
      * @return
      */
     public AppUpdater setNotification(@Nullable INotification notification) {
@@ -117,11 +117,11 @@ public class AppUpdater {
     }
 
     /**
-     * 开始下载
+     * start download
      */
     public void start() {
         if (mConfig != null && !TextUtils.isEmpty(mConfig.getUrl())) {
-            // 如果mContext是Activity,并且配置了下载路径，则默认会校验一次动态权限。
+            // If mContext is an Activity and a download path is configured, dynamic permissions will be checked once by default.
             if (mContext instanceof Activity && !TextUtils.isEmpty(mConfig.getPath())) {
                 PermissionUtils.verifyReadAndWritePermissions((Activity) mContext, Constants.RE_CODE_STORAGE_PERMISSION);
             }
@@ -129,7 +129,7 @@ public class AppUpdater {
             if (mConfig.isShowNotification() && !PermissionUtils.isNotificationEnabled(mContext)) {
                 LogUtils.w("Notification permission is not enabled.");
             }
-            // 启动下载服务
+            // Start the download service
             startDownloadService();
         } else {
             throw new IllegalArgumentException("Url must not be empty.");
@@ -137,12 +137,12 @@ public class AppUpdater {
     }
 
     /**
-     * 启动下载服务
+     * Start download service
      */
     private void startDownloadService() {
         Intent intent = new Intent(mContext, DownloadService.class);
         if (mCallback != null || mHttpManager != null || mNotification != null) {
-            // 通过 bindService 的方式启动下载服务
+            // Start the download service through bindService
             mServiceConnection = new ServiceConnection() {
                 @Override
                 public void onServiceConnected(ComponentName name, IBinder service) {
@@ -162,21 +162,21 @@ public class AppUpdater {
 
             mContext.getApplicationContext().bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
         } else {
-            // 通过 startService 的方式启动下载服务
+            // Start the download service by starting Service
             intent.putExtra(Constants.KEY_UPDATE_CONFIG, mConfig);
             mContext.startService(intent);
         }
     }
 
     /**
-     * 取消下载
+     * Cancel download
      */
     public void stop() {
         stopDownloadService();
     }
 
     /**
-     * 停止下载服务
+     * Stop download service
      */
     private void stopDownloadService() {
         Intent intent = new Intent(mContext, DownloadService.class);
@@ -185,7 +185,7 @@ public class AppUpdater {
     }
 
     /**
-     * AppUpdater建造者
+     * AppUpdater Builder
      */
     public static class Builder {
         /**
@@ -193,14 +193,14 @@ public class AppUpdater {
          */
         private Context mContext;
         /**
-         * AppUpdater的配置信息
+         * AppUpdater configuration information
          */
         private UpdateConfig mConfig;
 
         /**
-         * 构造
+         * Construction
          *
-         * @deprecated 此方法已标记为废弃，后续可能会删除；请使用 {@link #Builder(Context)}
+         * @deprecated This method has been marked as deprecated and may be deleted later; please use {@link #Builder(Context)}
          */
         @Deprecated
         public Builder() {
@@ -208,7 +208,7 @@ public class AppUpdater {
         }
 
         /**
-         * 构造
+         * Construction
          *
          * @param context {@link Context}
          */
@@ -218,7 +218,7 @@ public class AppUpdater {
         }
 
         /**
-         * 设置上下文
+         * Set the context
          *
          * @param context {@link Context}
          * @return
@@ -229,9 +229,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置APK下载地址
+         * Set APK download address
          *
-         * @param url 下载地址
+         * @param url download address
          * @return
          */
         public Builder setUrl(@NonNull String url) {
@@ -240,11 +240,11 @@ public class AppUpdater {
         }
 
         /**
-         * 设置保存的路径，（建议使用默认，不做设置）
+         * Set the save path (it is recommended to use the default and not set it)
          *
-         * @param path 下载保存的文件路径
+         * @param path Download and save file path
          * @return
-         * @deprecated 因为适配Android Q的分区存储，所以此方法已弃用，不建议再使用
+         * @deprecated This method has been deprecated to adapt to Android Q's partition storage and is not recommended.
          */
         @Deprecated
         public Builder setPath(String path) {
@@ -253,9 +253,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置保存的文件名
+         * Set the saved file name
          *
-         * @param filename 下载的保存的apk文件名（默认优先取url文件名）
+         * @param filename The downloaded and saved apk file name (the URL file name is preferred by default)
          * @return
          */
         public Builder setFilename(String filename) {
@@ -264,9 +264,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置是否显示通知栏
+         * Set whether to display the notification bar
          *
-         * @param isShowNotification 是否显示通知栏（默认true）
+         * @param isShowNotification whether to display the notification bar (default true)
          * @return
          */
         public Builder setShowNotification(boolean isShowNotification) {
@@ -275,9 +275,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置通知ID
+         * Set notification ID
          *
-         * @param notificationId 通知ID
+         * @param notificationId notification ID
          * @return
          */
         public Builder setNotificationId(int notificationId) {
@@ -286,9 +286,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置通知通道ID
+         * Set the notification channel ID
          *
-         * @param channelId 通知通道ID（默认兼容O）
+         * @param channelId Notification channel ID (default compatible with O)
          * @return
          */
         public Builder setChannelId(String channelId) {
@@ -297,9 +297,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置通知通道名称
+         * Set the notification channel name
          *
-         * @param channelName 通知通道名称（默认兼容O）
+         * @param channelName notification channel name (default compatible with O)
          * @return
          */
         public Builder setChannelName(String channelName) {
@@ -308,9 +308,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置通知图标
+         * Set notification icon
          *
-         * @param icon 通知栏图标（默认取App的icon）
+         * @param icon Notification bar icon (App icon by default)
          * @return
          */
         public Builder setNotificationIcon(@DrawableRes int icon) {
@@ -319,9 +319,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置通知是否震动提示
+         * Set whether the notification should vibrate
          *
-         * @param vibrate 是否震动提示，为true时使用通知默认震动，Android O(8.0)以上设置，只有初次创建channel时有效，后续修改属性无效，想要重新有效需修改channelId或卸载App重装。
+         * @param vibrate indicates whether to vibrate the notification. When true, the default vibration is used. This setting is only valid for Android O (8.0) and above. It is only valid when the channel is first created. Subsequent modification of the attribute is invalid. To make it valid again, you need to modify the channelId or uninstall the App and reinstall it.
          * @return
          */
         public Builder setVibrate(boolean vibrate) {
@@ -330,9 +330,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置通知是否铃声提示
+         * Set whether notification ringtone should be used
          *
-         * @param sound 是否铃声提示，为true时使用通知默认铃声，Android O(8.0)以上设置，只有初次创建channel时有效，后续修改属性无效，想要重新有效需修改channelId或卸载App重装。
+         * @param sound indicates whether to use ringtone. If true, the default ringtone is used. This setting is only valid for Android O (8.0) and above. It is only valid when the channel is first created. Subsequent modification of the attribute will be invalid. To make it valid again, you need to modify the channelId or uninstall the App and reinstall it.
          * @return
          */
         public Builder setSound(boolean sound) {
@@ -342,9 +342,9 @@ public class AppUpdater {
 
 
         /**
-         * 设置下载完成后知否自动触发安装APK
+         * Set whether to automatically trigger the installation of APK after downloading
          *
-         * @param isInstallApk 下载完成后是否自动调用安装APK（默认true）
+         * @param isInstallApk Whether to automatically call the installation APK after downloading is complete (default true)
          * @return
          */
         public Builder setInstallApk(boolean isInstallApk) {
@@ -353,9 +353,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置FileProvider的authority
+         * Set the FileProvider authority
          *
-         * @param authority FileProvider的authority（默认兼容N，默认值{@link Context#getPackageName() + ".AppUpdaterFileProvider"}）
+         * @param authority FileProvider authority (default compatible with N, default value {@link Context#getPackageName() + ".AppUpdaterFileProvider"})
          * @return
          */
         public Builder setAuthority(String authority) {
@@ -364,9 +364,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置下载时，通知栏是否显示下载百分比
+         * Set whether to display the download percentage in the notification bar when downloading
          *
-         * @param showPercentage 下载时通知栏是否显示百分比
+         * @param showPercentage Whether the notification bar displays the percentage when downloading
          * @return
          */
         public Builder setShowPercentage(boolean showPercentage) {
@@ -375,9 +375,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置下载失败时，是否支持点击通知栏重新下载。与之相关联的方法{@link #setReDownloads(int)}
+         * Set whether to support re-downloading by clicking the notification bar when downloading fails. The associated method is {@link #setReDownloads(int)}
          *
-         * @param reDownload 下载失败时是否支持点击通知栏重新下载，默认true
+         * @param reDownload Whether to support clicking the notification bar to re-download when download fails, the default is true
          * @return
          */
         public Builder setReDownload(boolean reDownload) {
@@ -386,9 +386,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置下载失败时，最多重新下载次数。与之相关联的方法{@link #setReDownload(boolean)}
+         * Set the maximum number of re-downloads when download fails. The associated method is {@link #setReDownload(boolean)}
          *
-         * @param reDownloads 下载失败时是否支持点击通知栏重新下载，默认最多重新下载3次
+         * @param reDownloads Whether to support clicking the notification bar to re-download when download fails. The default is to re-download up to 3 times
          * @return
          */
         public Builder setReDownloads(int reDownloads) {
@@ -397,12 +397,12 @@ public class AppUpdater {
         }
 
         /**
-         * 设置要下载APK的versionCode，用于优先取缓存时通过versionCode校验APK文件是否一致。
-         * 缓存校验目前支持两种方式，一种是通过versionCode校验，即{@link #setVersionCode(long)}；一种是文件MD5校验，即{@link #setApkMD5(String)}。推荐使用MD5校验方式
-         * 如果两种方式都设置了，则只校验MD5
+         * Set the versionCode of the APK to be downloaded. This is used to verify whether the APK files are consistent when the cache is first retrieved.
+         * Cache verification currently supports two methods: one is through versionCode verification, that is, {@link #setVersionCode(long)}; the other is file MD5 verification, that is, {@link #setApkMD5(String)}. It is recommended to use the MD5 verification method
+         * If both methods are set, only MD5 is verified
          *
-         * @param versionCode 为null表示不处理，默认不存在则下载，存在则重新下载。不为null时，表示会优先校验本地是否存在已下载版本号为versionCode的APK。
-         *                    如果存在则不会重新下载(AppUpdater会自动校验packageName一致性)，直接取本地APK，反之重新下载。
+         * @param versionCode is null, which means no processing. If it does not exist, it will be downloaded by default. If it exists, it will be re-downloaded. If it is not null, it means that the local APK with the downloaded version number versionCode will be checked first.
+         *                    If it exists, it will not be downloaded again (AppUpdater will automatically check the consistency of packageName). It will directly get the local APK. Otherwise, it will be downloaded again.
          * @return
          */
         public Builder setVersionCode(long versionCode) {
@@ -411,11 +411,11 @@ public class AppUpdater {
         }
 
         /**
-         * 设置APK文件的MD5，用于优先取缓存时通过MD5校验文件APK是否一致。
-         * 缓存校验目前支持两种方式，一种是通过versionCode校验，即{@link #setVersionCode(long)}；一种是文件MD5校验，即{@link #setApkMD5(String)}。推荐使用MD5校验方式
-         * 如果两种方式都设置了，则只校验MD5
+         * Set the MD5 of the APK file to verify whether the file APK is consistent through MD5 when taking the cache first.
+         * Cache verification currently supports two methods: one is through versionCode verification, that is, {@link #setVersionCode(long)}; the other is file MD5 verification, that is, {@link #setApkMD5(String)}. It is recommended to use the MD5 verification method
+         * If both methods are set, only MD5 is verified
          *
-         * @param md5 为null表示不处理，如果设置了MD5，则缓存APK的MD5相同时，只下载一次，优先取本地缓存
+         * @param md5 is null, which means no processing. If MD5 is set, if the MD5 of the cached APK is the same, it will only be downloaded once, and the local cache will be given priority.
          * @return
          */
         public Builder setApkMD5(String md5) {
@@ -424,7 +424,7 @@ public class AppUpdater {
         }
 
         /**
-         * 请求头添加参数
+         * Add parameters to the request header
          *
          * @param key
          * @param value
@@ -436,7 +436,7 @@ public class AppUpdater {
         }
 
         /**
-         * 请求头添加参数
+         * Add parameters to the request header
          *
          * @param headers
          * @return
@@ -447,9 +447,9 @@ public class AppUpdater {
         }
 
         /**
-         * 设置是否自动删除取消下载的文件
+         * Set whether to automatically delete the files that were canceled from downloading
          *
-         * @param deleteCancelFile 是否删除取消下载的文件（默认为true）
+         * @param deleteCancelFile whether to delete the file that was canceled (default is true)
          */
         public Builder setDeleteCancelFile(boolean deleteCancelFile) {
             mConfig.setDeleteCancelFile(deleteCancelFile);
@@ -457,11 +457,11 @@ public class AppUpdater {
         }
 
         /**
-         * 是否支持通过删除通知栏来取消下载（默认为：false）
+         * Whether to support canceling downloads by removing the notification bar (default: false)
          *
          * @param cancelDownload
          * @return
-         * @deprecated 此方法已标记为废弃，后续可能会删除；请使用 {@link #setSupportCancelDownload(boolean)}
+         * @deprecated This method has been marked as deprecated and may be deleted later; please use {@link #setSupportCancelDownload(boolean)}
          */
         @Deprecated
         public Builder setCancelDownload(boolean cancelDownload) {
@@ -469,7 +469,7 @@ public class AppUpdater {
         }
 
         /**
-         * 是否支持通过删除通知栏来取消下载（默认为：false）
+         * Whether to support canceling downloads by removing the notification bar (default: false)
          *
          * @param supportCancelDownload
          * @return
@@ -480,7 +480,7 @@ public class AppUpdater {
         }
 
         /**
-         * 构建 AppUpdater
+         * Build AppUpdater
          *
          * @return {@link AppUpdater}
          */
@@ -492,11 +492,11 @@ public class AppUpdater {
         }
 
         /**
-         * 构建 AppUpdater
+         * Build AppUpdater
          *
          * @param context
          * @return {@link AppUpdater}
-         * @deprecated 此方法已标记为废弃，后续可能会删除；请使用 {@link #build()}
+         * @deprecated This method has been marked as deprecated and may be deleted later; please use {@link #build()}
          */
         @Deprecated
         public AppUpdater build(@NonNull Context context) {

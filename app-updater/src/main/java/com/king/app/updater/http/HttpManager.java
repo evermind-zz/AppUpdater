@@ -19,7 +19,7 @@ import javax.net.ssl.HttpsURLConnection;
 import androidx.annotation.Nullable;
 
 /**
- * HttpManager使用 {@link HttpURLConnection} 实现的 {@link IHttpManager}
+ * HttpManager uses {@link IHttpManager} implemented by {@link HttpURLConnection}
  *
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
@@ -52,7 +52,7 @@ public class HttpManager implements IHttpManager {
     }
 
     /**
-     * HttpManager对外暴露。如果没有特殊需求，推荐使用{@link HttpManager#getInstance()}
+     * HttpManager is exposed to the outside world. If there is no special requirement, it is recommended to use {@link HttpManager#getInstance()}
      */
     public HttpManager(int timeout) {
         this.mTimeout = timeout;
@@ -72,7 +72,7 @@ public class HttpManager implements IHttpManager {
     }
 
     /**
-     * 异步下载任务
+     * Asynchronous download tasks
      */
     private static class DownloadTask extends AsyncTask<Void, Long, File> {
 
@@ -142,7 +142,7 @@ public class HttpManager implements IHttpManager {
                         }
                         fos.write(buffer, 0, len);
                         progress += len;
-                        // 更新进度
+                        // Update progress
                         publishProgress(progress, length);
                     }
 
@@ -164,14 +164,14 @@ public class HttpManager implements IHttpManager {
                 case HttpURLConnection.HTTP_SEE_OTHER:
                 case HTTP_TEMP_REDIRECT:
                 case HTTP_PERM_REDIRECT: {
-                    // 重定向
+                    // Redirect
                     String redirectUrl = connect.getHeaderField("Location");
                     LogUtils.d("redirectUrl = " + redirectUrl);
                     connect.disconnect();
                     return download(redirectUrl);
                 }
                 default:
-                    // 连接失败
+                    // Connection failed
                     throw new ConnectException(String.format("responseCode = %d", responseCode));
 
             }

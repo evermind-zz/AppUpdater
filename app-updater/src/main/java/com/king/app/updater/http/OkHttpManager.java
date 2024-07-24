@@ -20,8 +20,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * OkHttpManager使用 {@link OkHttpClient} 实现的 {@link IHttpManager}
- * <p>使用 OkHttpManager 时必须依赖 OkHttp 库
+ * OkHttpManager uses {@link IHttpManager} implemented by {@link OkHttpClient}
+ * <p>When using OkHttpManager, you must rely on the OkHttp library
  *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
@@ -52,9 +52,9 @@ public class OkHttpManager implements IHttpManager {
     }
 
     /**
-     * HttpManager对外暴露。如果没有特殊需求，推荐使用{@link HttpManager#getInstance()}
+     * HttpManager is exposed to the outside world. If there is no special requirement, it is recommended to use {@link HttpManager#getInstance()}
      *
-     * @param timeout 超时时间，单位：毫秒
+     * @param timeout timeout, unit: milliseconds
      */
     public OkHttpManager(int timeout) {
         this(new OkHttpClient.Builder()
@@ -66,7 +66,7 @@ public class OkHttpManager implements IHttpManager {
     }
 
     /**
-     * HttpManager对外暴露，推荐使用{@link HttpManager#getInstance()}
+     * HttpManager is exposed externally, it is recommended to use {@link HttpManager#getInstance()}
      *
      * @param okHttpClient {@link OkHttpClient}
      */
@@ -90,7 +90,7 @@ public class OkHttpManager implements IHttpManager {
 
 
     /**
-     * 异步下载任务
+     * Asynchronous download tasks
      */
     private static class DownloadTask extends AsyncTask<Void, Long, File> {
 
@@ -158,7 +158,7 @@ public class OkHttpManager implements IHttpManager {
                         }
                         fos.write(buffer, 0, len);
                         progress += len;
-                        // 更新进度
+                        // Update progress
                         publishProgress(progress, length);
                     }
 
@@ -174,7 +174,7 @@ public class OkHttpManager implements IHttpManager {
 
                     return file;
 
-                } else {// 连接失败
+                } else {// Connection failed
                     throw new ConnectException(String.format("responseCode = %d", response.code()));
                 }
 

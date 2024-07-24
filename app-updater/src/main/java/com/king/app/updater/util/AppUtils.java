@@ -30,7 +30,7 @@ import androidx.core.content.pm.PackageInfoCompat;
 public final class AppUtils {
 
     /**
-     * 十六进制字符
+     * Hexadecimal characters
      */
     private static char hexChars[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
@@ -39,10 +39,10 @@ public final class AppUtils {
     }
 
     /**
-     * 通过url获取App的全名称
+     * Get the full name of the App through the URL
      *
-     * @param context 上下文
-     * @return 返回App的名称；（例如：AppName.apk）
+     * @param context context
+     * @return Returns the name of the App; (e.g.: AppName.apk)
      */
     public static String getAppFullName(Context context, String url, String defaultName) {
         if (url.endsWith(".apk")) {
@@ -64,9 +64,9 @@ public final class AppUtils {
     }
 
     /**
-     * 获取包信息
+     * Get package information
      *
-     * @param context 上下文
+     * @param context context
      * @return {@link PackageInfo}
      * @throws PackageManager.NameNotFoundException
      */
@@ -77,10 +77,10 @@ public final class AppUtils {
     }
 
     /**
-     * 通过APK路径获取包信息
+     * Get package information through APK path
      *
-     * @param context         上下文
-     * @param archiveFilePath 文件路径
+     * @param context         context
+     * @param archiveFilePath file path
      * @return
      */
     public static PackageInfo getPackageInfo(Context context, String archiveFilePath) {
@@ -90,9 +90,9 @@ public final class AppUtils {
     }
 
     /**
-     * 获取App的名称
+     * Get the name of the App
      *
-     * @param context 上下文
+     * @param context context
      */
     public static String getAppName(Context context) {
         try {
@@ -105,9 +105,9 @@ public final class AppUtils {
     }
 
     /**
-     * 获取App的图标
+     * Get the App icon
      *
-     * @param context 上下文
+     * @param context context
      * @return
      */
     public static int getAppIcon(Context context) {
@@ -120,11 +120,11 @@ public final class AppUtils {
     }
 
     /**
-     * 安装APK
+     * Install APK
      *
-     * @param context   上下文
-     * @param file      APK文件
-     * @param authority 文件访问授权
+     * @param context   context
+     * @param file      APK file
+     * @param authority file access authorization
      */
     public static void installApk(Context context, File file, String authority) {
         Intent intent = getInstallIntent(context, file, authority);
@@ -132,11 +132,11 @@ public final class AppUtils {
     }
 
     /**
-     * 获取安装Intent
+     * Get the installation intent
      *
-     * @param context   上下文
-     * @param file      APK文件
-     * @param authority 文件访问授权
+     * @param context   context
+     * @param file      APK file
+     * @param authority file access authorization
      * @return
      */
     public static Intent getInstallIntent(Context context, File file, String authority) {
@@ -156,11 +156,11 @@ public final class AppUtils {
     }
 
     /**
-     * APK是否存在
+     * Does the APK exist?
      *
-     * @param context     上下文
-     * @param versionCode 版本号
-     * @param file        APK文件
+     * @param context     context
+     * @param versionCode version number
+     * @param file        APK file
      * @return
      * @throws Exception
      */
@@ -170,12 +170,12 @@ public final class AppUtils {
             PackageInfo packageInfo = AppUtils.getPackageInfo(context, file.getAbsolutePath());
 
             if (packageInfo != null) {
-                // 比对versionCode
+                // Compare versionCode
                 long apkVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo);
                 LogUtils.d(String.format(Locale.getDefault(), "ApkVersionCode: %d", apkVersionCode));
                 if (versionCode == apkVersionCode) {
                     ApplicationInfo applicationInfo = packageInfo.applicationInfo;
-                    if (applicationInfo != null && packageName.equals(applicationInfo.packageName)) {//比对packageName
+                    if (applicationInfo != null && packageName.equals(applicationInfo.packageName)) {//Compare packageName
                         return true;
                     }
                 }
@@ -185,10 +185,10 @@ public final class AppUtils {
     }
 
     /**
-     * 判断文件是否存在
+     * Check if the file exists
      *
-     * @param context 上下文
-     * @param path    文件路径
+     * @param context context
+     * @param path    file path
      * @return
      */
     public static boolean isAndroidQFileExists(Context context, String path) {
@@ -196,10 +196,10 @@ public final class AppUtils {
     }
 
     /**
-     * 判断文件是否存在
+     * Check if the file exists
      *
-     * @param context 上下文
-     * @param file    文件
+     * @param context context
+     * @param file    file
      * @return
      */
     public static boolean isAndroidQFileExists(Context context, File file) {
@@ -223,11 +223,11 @@ public final class AppUtils {
     }
 
     /**
-     * 校验文件的MD5
+     * Verify the MD5 of the file
      *
-     * @param file 文件
+     * @param file file
      * @param md5  MD5
-     * @return 如果文件的MD5与 传入的 MD5字符比对一致，则返回 true，反之返回 false
+     * @return If the MD5 of the file matches the MD5 string passed in, it returns true, otherwise it returns false
      */
     public static boolean verifyFileMD5(File file, String md5) {
         String fileMD5 = getFileMD5(file);
@@ -240,10 +240,10 @@ public final class AppUtils {
     }
 
     /**
-     * 获取文件的MD5
+     * Get the MD5 of the file
      *
-     * @param file 文件
-     * @return 返回文件的MD5
+     * @param file file
+     * @return Returns the MD5 of the file
      */
     public static String getFileMD5(File file) {
         FileInputStream fileInputStream = null;
@@ -272,10 +272,10 @@ public final class AppUtils {
     }
 
     /**
-     * 字节转为十六进制字符串
+     * Convert bytes to hexadecimal string
      *
-     * @param bytes 字节数组
-     * @return 返回十六进制字符串
+     * @param bytes byte array
+     * @return Returns a hexadecimal string
      */
     public static String byteArrayToHexString(byte bytes[]) {
         String hexString = null;
@@ -294,17 +294,17 @@ public final class AppUtils {
     }
 
     /**
-     * 获取文件访问授权
+     * Get file access authorization
      *
-     * @param context 上下文
-     * @return 返回文件访问授权
+     * @param context context
+     * @return Returns file access authorization
      */
     public static String getFileProviderAuthority(Context context) {
         return context.getPackageName() + Constants.DEFAULT_FILE_PROVIDER;
     }
 
     /**
-     * 关闭
+     * closure
      *
      * @param descriptor {@link AssetFileDescriptor}
      */
@@ -319,7 +319,7 @@ public final class AppUtils {
     }
 
     /**
-     * 删除文件或文件夹
+     * Delete files or folders
      *
      * @param file
      */
@@ -332,19 +332,19 @@ public final class AppUtils {
         } else if (file.isDirectory()) {
             for (File f : file.listFiles()) {
                 if (f.isFile()) {
-                    f.delete(); // 删除所有文件
+                    f.delete(); // Delete all files
                 } else if (f.isDirectory()) {
-                    deleteFile(f); // 递规的方式删除文件夹
+                    deleteFile(f); // Delete folders recursively
                 }
             }
-            // 删除目录本身
+            // Delete the directory itself
             return file.delete();
         }
         return false;
     }
 
     /**
-     * 获取APK缓存的文件夹
+     * Get the APK cache folder
      *
      * @param context
      * @return

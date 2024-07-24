@@ -12,87 +12,87 @@ import androidx.annotation.StringRes;
 import androidx.annotation.StyleRes;
 
 /**
- * 基础对话框配置
+ * Basic dialog configuration
  *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public class BaseDialogConfig {
 
     /**
-     * 布局ID
+     * Layout ID
      */
     @LayoutRes
     int layoutId;
     /**
-     * 标题视图ID
+     * Title view ID
      */
     @IdRes
     int titleId = R.id.tvDialogTitle;
     /**
-     * 内容视图ID
+     * Content view ID
      */
     @IdRes
     int contentId = R.id.tvDialogContent;
     /**
-     * 取消视图ID（左边按钮）
+     * Cancel view ID (button on the left)
      */
     @IdRes
     int cancelId = R.id.btnDialogCancel;
     /**
-     * 确定视图ID（右边按钮）
+     * Determine the view ID (button on the right)
      */
     @IdRes
     int confirmId = R.id.btnDialogConfirm;
     /**
-     * 按钮中间分割线ID
+     * The ID of the dividing line in the middle of the button
      */
     @IdRes
     int lineId = R.id.line;
 
     /**
-     * 样式ID
+     * Style ID
      */
     @StyleRes
     int styleId = R.style.app_dialog;
 
     /**
-     * 对话框动画样式ID
+     * Dialog animation style ID
      */
     @StyleRes
     int animationStyleId = R.style.app_dialog_scale_animation;
 
     /**
-     * 标题文本
+     * Title text
      */
     CharSequence title;
     /**
-     * 内容文本
+     * Content text
      */
     CharSequence content;
     /**
-     * 取消按钮文本
+     * Cancel button text
      */
     CharSequence cancel;
     /**
-     * 确定按钮文本
+     * OK button text
      */
     CharSequence confirm;
     /**
-     * 是否隐藏取消按钮，如果隐藏取消则底部只显示一个按钮
+     * Whether to hide the cancel button. If the cancel button is hidden, only one button will be displayed at the bottom.
      */
     boolean isHideCancel;
     /**
-     * 是否隐藏标题
+     * Whether to hide the title
      */
     boolean isHideTitle;
 
     /**
-     * 宽度比例，根据屏幕宽度计算得来
+     * Width ratio, calculated based on screen width
      */
     float widthRatio = AppDialog.INSTANCE.DEFAULT_WIDTH_RATIO;
 
     /**
-     * Dialog对齐方式 {@link WindowManager.LayoutParams#gravity}
+     * Dialog alignment {@link WindowManager.LayoutParams#gravity}
      */
     int gravity = Gravity.NO_GRAVITY;
 
@@ -121,34 +121,34 @@ public class BaseDialogConfig {
      */
     float verticalWeight;
     /**
-     * 点击“取消”按钮监听
+     * Click the "Cancel" button to listen
      */
     View.OnClickListener onClickCancel;
     /**
-     * 点击“确定”按钮监听
+     * Click the "OK" button to listen
      */
     View.OnClickListener onClickConfirm;
 
     /**
-     * 构造
+     * Construction
      */
     public BaseDialogConfig() {
         this(R.layout.app_dialog);
     }
 
     /**
-     * 构造
+     * Construction
      *
-     * @param layoutId 布局ID
+     * @param layoutId layout ID
      */
     public BaseDialogConfig(@LayoutRes int layoutId) {
         this.layoutId = layoutId;
     }
 
     /**
-     * 布局ID
+     * Layout ID
      *
-     * @return 布局ID
+     * @return layout ID
      */
     @LayoutRes
     public int getLayoutId() {
@@ -156,11 +156,11 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 此方法即将废弃，请通过构造{@link #BaseDialogConfig(int)}来初始化
+     * This method will be deprecated soon. Please initialize it by constructing {@link #BaseDialogConfig(int)}
      *
-     * @param layoutId 布局ID
+     * @param layoutId layout ID
      * @return {@link BaseDialogConfig}
-     * @deprecated 即将废弃，下一个版本可能会移除此方法
+     * @deprecated This method will be deprecated soon and may be removed in the next version.
      */
     @Deprecated
     public BaseDialogConfig setLayoutId(@LayoutRes int layoutId) {
@@ -169,9 +169,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 标题视图ID
+     * Title view ID
      *
-     * @return 视图ID
+     * @return view ID
      */
     @IdRes
     public int getTitleId() {
@@ -179,9 +179,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置标题视图ID
+     * Set the title view ID
      *
-     * @param titleId 视图ID
+     * @param titleId view ID
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setTitleId(@IdRes int titleId) {
@@ -190,9 +190,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 样式ID
+     * Style ID
      *
-     * @return 样式ID
+     * @return style ID
      */
     @StyleRes
     public int getStyleId() {
@@ -200,7 +200,7 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置Dialog样式ID(仅对Dialog有效，如果使用的是DialogFragment，请使用{@link #setAnimationStyleId(int)})
+     * Set the Dialog style ID (valid only for Dialog, if you are using DialogFragment, please use {@link #setAnimationStyleId(int)})
      *
      * @param styleId
      * @return {@link BaseDialogConfig}
@@ -211,7 +211,7 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 对话框动画样式ID
+     * Dialog animation style ID
      *
      * @return
      */
@@ -221,7 +221,7 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 对话框动画样式ID (仅对DialogFragment有效，如果使用的是Dialog，请使用{@link #setStyleId(int)})
+     * Dialog animation style ID (valid only for DialogFragment. If you are using Dialog, please use {@link #setStyleId(int)})
      *
      * @param animationStyleId
      * @return {@link BaseDialogConfig}
@@ -232,9 +232,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 内容视图ID
+     * Content view ID
      *
-     * @return 视图ID
+     * @return view ID
      */
     @IdRes
     public int getContentId() {
@@ -242,9 +242,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置内容视图ID
+     * Set the content view ID
      *
-     * @param contentId 内容视图ID
+     * @param contentId content view ID
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setContentId(@IdRes int contentId) {
@@ -253,9 +253,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 取消按钮视图ID
+     * Cancel button view ID
      *
-     * @return 视图ID
+     * @return view ID
      */
     @IdRes
     public int getCancelId() {
@@ -263,9 +263,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置取消按钮视图ID
+     * Set the cancel button view ID
      *
-     * @param cancelId 取消按钮视图ID
+     * @param cancelId cancel button view ID
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setCancelId(@IdRes int cancelId) {
@@ -274,10 +274,10 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 获取确定按钮视图ID
+     * Get the OK button view ID
      *
-     * @return 确定按钮视图ID
-     * @Deprecated 请使用 {@link #getConfirmId()}来代替，后续版本可能会移除此方法
+     * @return Confirm button view ID
+     * @Deprecated Please use {@link #getConfirmId()} instead. This method may be removed in subsequent versions.
      */
     @Deprecated
     @IdRes
@@ -286,11 +286,11 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置确定按钮视图ID
+     * Set the OK button view ID
      *
-     * @param okId 确定按钮视图ID
+     * @param okId OK button view ID
      * @return {@link BaseDialogConfig}
-     * @Deprecated 请使用 {@link #setConfirmId(int)}来代替，后续版本可能移除此方法
+     * @Deprecated Please use {@link #setConfirmId(int)} instead. This method may be removed in subsequent versions.
      */
     @Deprecated
     public BaseDialogConfig setOkId(@IdRes int okId) {
@@ -298,9 +298,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 获取确定按钮视图ID
+     * Get the OK button view ID
      *
-     * @return 视图ID
+     * @return view ID
      */
     @IdRes
     public int getConfirmId() {
@@ -308,9 +308,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置确定按钮视图ID
+     * Set the OK button view ID
      *
-     * @param confirmId 确定按钮视图ID
+     * @param confirmId Confirm button view ID
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setConfirmId(@IdRes int confirmId) {
@@ -319,9 +319,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 分割线视图ID
+     * Dividing line view ID
      *
-     * @return 视图ID
+     * @return view ID
      */
     @IdRes
     public int getLineId() {
@@ -329,9 +329,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置分割线视图ID
+     * Set the dividing line view ID
      *
-     * @param lineId 分割线视图ID
+     * @param lineId dividing line view ID
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setLineId(@IdRes int lineId) {
@@ -340,18 +340,18 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 标题
+     * Title
      *
-     * @return 标题
+     * @return title
      */
     public CharSequence getTitle() {
         return title;
     }
 
     /**
-     * 设置标题
+     * Set the title
      *
-     * @param title 标题
+     * @param title title
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setTitle(CharSequence title) {
@@ -360,10 +360,10 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置标题
+     * Set the title
      *
-     * @param context 上下文
-     * @param resId   标题资源ID
+     * @param context context
+     * @param resId   Title resource ID
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setTitle(@NonNull Context context, @StringRes int resId) {
@@ -372,18 +372,18 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 文本内容
+     * Text content
      *
-     * @return 文本内容
+     * @return text content
      */
     public CharSequence getContent() {
         return content;
     }
 
     /**
-     * 设置文本内容
+     * Set the text content
      *
-     * @param content 文本内容
+     * @param content text content
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setContent(CharSequence content) {
@@ -392,18 +392,18 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 取消按钮文本内容
+     * Cancel button text content
      *
-     * @return 取消按钮文本内容
+     * @return Cancel button text content
      */
     public CharSequence getCancel() {
         return cancel;
     }
 
     /**
-     * 设置取消按钮文本内容
+     * Set the cancel button text
      *
-     * @param cancel 取消按钮文本内容
+     * @param cancel cancel button text content
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setCancel(CharSequence cancel) {
@@ -412,10 +412,10 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置取消按钮文本内容
+     * Set the cancel button text
      *
-     * @param context 上下文
-     * @param resId   取消按钮文本内容资源ID
+     * @param context context
+     * @param resId   Cancel button text content resource ID
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setCancel(@NonNull Context context, @StringRes int resId) {
@@ -424,10 +424,10 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 获取确定按钮文本内容
+     * Get the text content of the OK button
      *
-     * @return 确定按钮文本内容
-     * @deprecated 请使用 {@link #getConfirm()} 来代替，后续版本可能会移除此方法
+     * @return Confirm button text content
+     * @deprecated Please use {@link #getConfirm()} instead. This method may be removed in subsequent versions.
      */
     @Deprecated
     public CharSequence getOk() {
@@ -435,11 +435,11 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置确定按钮文本内容
+     * Set the text content of the OK button
      *
-     * @param ok 确定按钮文本内容
+     * @param ok confirms the button text content
      * @return {@link BaseDialogConfig}
-     * @deprecated 请使用 {@link #setConfirm(CharSequence)} 来代替，后续版本可能会移除此方法
+     * @deprecated Please use {@link #setConfirm(CharSequence)} instead. This method may be removed in subsequent versions.
      */
     @Deprecated
     public BaseDialogConfig setOk(CharSequence ok) {
@@ -447,12 +447,12 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置确定按钮文本内容
+     * Set the text content of the OK button
      *
-     * @param context 上下文
-     * @param resId   确定按钮文本内容资源ID
+     * @param context context
+     * @param resId   Confirm button text content resource ID
      * @return {@link BaseDialogConfig}
-     * @deprecated 请使用 {@link #setConfirm(Context, int)}来代替，后续版本可能会移除此方法
+     * @deprecated Please use {@link #setConfirm(Context, int)} instead. This method may be removed in subsequent versions.
      */
     @Deprecated
     public BaseDialogConfig setOk(@NonNull Context context, @StringRes int resId) {
@@ -460,18 +460,18 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 确定按钮文本内容
+     * Confirm button text content
      *
-     * @return 确定按钮文本内容
+     * @return Confirm button text content
      */
     public CharSequence getConfirm() {
         return confirm;
     }
 
     /**
-     * 设置确定按钮文本内容
+     * Set the text content of the OK button
      *
-     * @param confirm 确定按钮文本内容
+     * @param confirm confirm button text content
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setConfirm(CharSequence confirm) {
@@ -480,10 +480,10 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置确定按钮文本内容
+     * Set the text content of the OK button
      *
-     * @param context 上下文
-     * @param resId   确定按钮文本内容资源ID
+     * @param context context
+     * @param resId   Confirm button text content resource ID
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setConfirm(@NonNull Context context, @StringRes int resId) {
@@ -492,7 +492,7 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 是否隐藏取消按钮
+     * Whether to hide the cancel button
      *
      * @return {@link #isHideCancel}
      */
@@ -501,9 +501,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置是否隐藏取消按钮
+     * Set whether to hide the cancel button
      *
-     * @param hideCancel 是否隐藏取消按钮
+     * @param hideCancel whether to hide the cancel button
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setHideCancel(boolean hideCancel) {
@@ -512,7 +512,7 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 是否隐藏标题
+     * Whether to hide the title
      *
      * @return {@link #isHideTitle}
      */
@@ -521,9 +521,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置是否隐藏标题
+     * Set whether to hide the title
      *
-     * @param hideTitle 是否隐藏标题
+     * @param hideTitle whether to hide the title
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setHideTitle(boolean hideTitle) {
@@ -532,7 +532,7 @@ public class BaseDialogConfig {
     }
 
     /**
-     * Dialog的宽度比例，根据屏幕宽度计算得来
+     * The width ratio of the Dialog is calculated based on the screen width
      *
      * @return {@link #widthRatio}
      */
@@ -541,9 +541,9 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置Dialog的宽度比例，根据屏幕宽度计算得来
+     * Set the width ratio of the Dialog, calculated based on the screen width
      *
-     * @param widthRatio Dialog的宽度比例；默认值：{@link AppDialog#DEFAULT_WIDTH_RATIO}
+     * @param widthRatio Dialog width ratio; default value: {@link AppDialog#DEFAULT_WIDTH_RATIO}
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setWidthRatio(float widthRatio) {
@@ -552,18 +552,18 @@ public class BaseDialogConfig {
     }
 
     /**
-     * Dialog的对齐方式  {@link WindowManager.LayoutParams#gravity}
+     * Dialog alignment {@link WindowManager.LayoutParams#gravity}
      *
-     * @return Dialog的对齐方式
+     * @return Dialog alignment
      */
     public int getGravity() {
         return gravity;
     }
 
     /**
-     * 设置Dialog的对齐方式  {@link WindowManager.LayoutParams#gravity}
+     * Set the alignment of the Dialog {@link WindowManager.LayoutParams#gravity}
      *
-     * @param gravity Dialog的对齐方式
+     * @param gravity Dialog alignment
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setGravity(int gravity) {
@@ -572,18 +572,18 @@ public class BaseDialogConfig {
     }
 
     /**
-     * “取消”按钮点击监听，不设置默认点击关闭弹框
+     * "Cancel" button click listener, do not set the default click to close the pop-up window
      *
-     * @return “取消”按钮点击监听
+     * @return "Cancel" button click listener
      */
     public View.OnClickListener getOnClickCancel() {
         return onClickCancel;
     }
 
     /**
-     * 设置“取消”按钮点击监听，不设置默认点击关闭弹框
+     * Set the "Cancel" button click listener, do not set the default click to close the pop-up window
      *
-     * @param onClickCancel “取消”按钮点击监听
+     * @param onClickCancel "Cancel" button click listener
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setOnClickCancel(View.OnClickListener onClickCancel) {
@@ -592,18 +592,18 @@ public class BaseDialogConfig {
     }
 
     /**
-     * “确定”按钮点击监听，不设置默认点击关闭弹框
+     * "OK" button click listener, do not set the default click to close the pop-up window
      *
-     * @return “确定”按钮点击监听
+     * @return "OK" button click listener
      */
     public View.OnClickListener getOnClickConfirm() {
         return onClickConfirm;
     }
 
     /**
-     * 设置“确定”按钮点击监听，不设置默认点击关闭弹框
+     * Set the "OK" button click listener, do not set the default click to close the pop-up window
      *
-     * @param onClickConfirm “确定”按钮点击监听
+     * @param onClickConfirm "Confirm" button click listener
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setOnClickConfirm(View.OnClickListener onClickConfirm) {
@@ -613,10 +613,10 @@ public class BaseDialogConfig {
 
 
     /**
-     * 获取“确定”按钮点击监听，不设置默认点击关闭弹框
+     * Get the "OK" button click listener, do not set the default click to close the pop-up window
      *
-     * @return “确定”按钮点击监听
-     * @deprecated 请使用 {@link #getOnClickConfirm()}来代替，后续版本可能会移除此方法
+     * @return "OK" button click listener
+     * @deprecated Please use {@link #getOnClickConfirm()} instead. This method may be removed in subsequent versions.
      */
     @Deprecated
     public View.OnClickListener getOnClickOk() {
@@ -624,11 +624,11 @@ public class BaseDialogConfig {
     }
 
     /**
-     * 设置“确定”按钮点击监听，不设置默认点击关闭弹框
+     * Set the "OK" button click listener, do not set the default click to close the pop-up window
      *
-     * @param onClickOk “确定”按钮点击监听
+     * @param onClickOk "OK" button click listener
      * @return {@link BaseDialogConfig}
-     * @deprecated 请使用 {@link #setOnClickConfirm(View.OnClickListener)}来代替，后续版本可能会移除此方法
+     * @deprecated Please use {@link #setOnClickConfirm(View.OnClickListener)} instead. This method may be removed in subsequent versions.
      */
     @Deprecated
     public BaseDialogConfig setOnClickOk(View.OnClickListener onClickOk) {
@@ -647,7 +647,7 @@ public class BaseDialogConfig {
     /**
      * {@link WindowManager.LayoutParams#x}
      *
-     * @param x x轴坐标
+     * @param x x axis coordinate
      */
     public BaseDialogConfig setX(int x) {
         this.x = x;
@@ -666,7 +666,7 @@ public class BaseDialogConfig {
     /**
      * {@link WindowManager.LayoutParams#y}
      *
-     * @param y y轴坐标
+     * @param y y axis coordinate
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setY(int y) {
@@ -686,7 +686,7 @@ public class BaseDialogConfig {
     /**
      * {@link WindowManager.LayoutParams#verticalMargin}
      *
-     * @param verticalMargin 垂直边距
+     * @param verticalMargin vertical margin
      */
     public void setVerticalMargin(float verticalMargin) {
         this.verticalMargin = verticalMargin;
@@ -704,7 +704,7 @@ public class BaseDialogConfig {
     /**
      * {@link WindowManager.LayoutParams#horizontalMargin}
      *
-     * @param horizontalMargin 水平边距
+     * @param horizontalMargin horizontal margin
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setHorizontalMargin(float horizontalMargin) {
@@ -724,7 +724,7 @@ public class BaseDialogConfig {
     /**
      * {@link WindowManager.LayoutParams#horizontalWeight}
      *
-     * @param horizontalWeight 水平方向权重
+     * @param horizontalWeight horizontal weight
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setHorizontalWeight(float horizontalWeight) {
@@ -744,7 +744,7 @@ public class BaseDialogConfig {
     /**
      * {@link WindowManager.LayoutParams#verticalWeight}
      *
-     * @param verticalWeight 垂直方向权重
+     * @param verticalWeight vertical weight
      * @return {@link BaseDialogConfig}
      */
     public BaseDialogConfig setVerticalWeight(float verticalWeight) {

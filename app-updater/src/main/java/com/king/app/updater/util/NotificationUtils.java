@@ -20,7 +20,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 /**
- * 通知栏工具
+ * Notification bar tools
  *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
@@ -31,7 +31,7 @@ public class NotificationUtils {
     }
 
     /**
-     * 显示开始下载时的通知
+     * Display notification when download starts
      *
      * @param notifyId
      * @param channelId
@@ -53,7 +53,7 @@ public class NotificationUtils {
         } else if (isSound) {
             builder.setDefaults(Notification.DEFAULT_SOUND);
         }
-        // 如果支持取消下载，点击通知栏时，则取消下载
+        // If download cancellation is supported, click the notification bar to cancel the download
         if (isSupportCancelDownload) {
             Intent intent = new Intent(context, DownloadService.class);
             intent.putExtra(Constants.KEY_STOP_DOWNLOAD_SERVICE, true);
@@ -72,7 +72,7 @@ public class NotificationUtils {
     }
 
     /**
-     * 显示下载中的通知（更新进度）
+     * Display downloading notifications (update progress)
      *
      * @param notifyId
      * @param channelId
@@ -84,7 +84,7 @@ public class NotificationUtils {
      */
     public static void showProgressNotification(Context context, int notifyId, String channelId, @DrawableRes int smallIcon, CharSequence title, CharSequence content, int progress, int size, boolean isSupportCancelDownload) {
         NotificationCompat.Builder builder = buildNotification(context, channelId, smallIcon, title, content, progress, size);
-        // 如果支持取消下载，点击通知栏时，则取消下载
+        // If download cancellation is supported, click the notification bar to cancel the download
         if (isSupportCancelDownload) {
             Intent intent = new Intent(context, DownloadService.class);
             intent.putExtra(Constants.KEY_STOP_DOWNLOAD_SERVICE, true);
@@ -104,7 +104,7 @@ public class NotificationUtils {
     }
 
     /**
-     * 显示下载完成时的通知（点击安装）
+     * Show notification when download is complete (click to install)
      *
      * @param notifyId
      * @param channelId
@@ -126,7 +126,7 @@ public class NotificationUtils {
     }
 
     /**
-     * 现在下载失败通知
+     * Download failure notification now
      *
      * @param context
      * @param notifyId
@@ -141,7 +141,7 @@ public class NotificationUtils {
         NotificationCompat.Builder builder = buildNotification(context, channelId, smallIcon, title, content);
         builder.setAutoCancel(true);
         int flag = getPendingIntentFlags(PendingIntent.FLAG_UPDATE_CURRENT);
-        // 点击通知栏时，则重新下载
+        // When you click the notification bar, re-download
         if (isReDownload) {
             Intent intent = new Intent(context, DownloadService.class);
             intent.putExtra(Constants.KEY_RE_DOWNLOAD, true);
@@ -149,7 +149,7 @@ public class NotificationUtils {
             PendingIntent clickIntent = PendingIntent.getService(context, notifyId, intent, flag);
             builder.setContentIntent(clickIntent);
         } else {
-            // 点击通知栏时，则自动取消通知栏
+            // When you click the notification bar, the notification bar will be automatically canceled
             PendingIntent clickIntent = PendingIntent.getService(context, notifyId, new Intent(), flag);
             builder.setContentIntent(clickIntent);
         }
@@ -161,7 +161,7 @@ public class NotificationUtils {
 
 
     /**
-     * 显示通知信息（非第一次）
+     * Display notification information (not the first time)
      *
      * @param notifyId
      * @param channelId
@@ -178,7 +178,7 @@ public class NotificationUtils {
     }
 
     /**
-     * 取消通知
+     * Cancellation Notice
      *
      * @param notifyId
      */
@@ -188,7 +188,7 @@ public class NotificationUtils {
 
 
     /**
-     * 获取通知管理器
+     * Get the notification manager
      *
      * @return {@link NotificationManagerCompat}
      */
@@ -197,7 +197,7 @@ public class NotificationUtils {
     }
 
     /**
-     * 创建一个通知通道（兼容0以上版本）
+     * Create a notification channel (compatible with version 0 and above)
      *
      * @param channelId
      * @param channelName
@@ -215,7 +215,7 @@ public class NotificationUtils {
     }
 
     /**
-     * 构建一个通知构建器
+     * Construct a notification builder
      *
      * @param channelId
      * @param smallIcon
@@ -228,7 +228,7 @@ public class NotificationUtils {
     }
 
     /**
-     * 构建一个通知构建器
+     * Construct a notification builder
      *
      * @param channelId
      * @param smallIcon
@@ -252,7 +252,7 @@ public class NotificationUtils {
     }
 
     /**
-     * 更新通知栏
+     * Update notification bar
      *
      * @param id
      * @param notification
@@ -262,7 +262,7 @@ public class NotificationUtils {
     }
 
     /**
-     * 获取 PendingIntent 的 flags
+     * Get the flags of the PendingIntent
      *
      * @param flag
      * @return

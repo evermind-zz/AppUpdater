@@ -11,18 +11,18 @@ import com.king.app.dialog.BaseDialogConfig;
 import com.king.app.dialog.R;
 
 /**
- * App对话框 Fragment：封装便捷的对话框API，使用时更简单
+ * App dialog Fragment: encapsulates a convenient dialog API, making it easier to use
  *
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public class AppDialogFragment extends BaseDialogFragment {
     /**
-     * 对话框配置
+     * Dialog configuration
      */
     private BaseDialogConfig config;
 
     /**
-     * 新建一个 {@link AppDialogFragment} 实例
+     * Create a new {@link AppDialogFragment} instance
      *
      * @param config
      * @return
@@ -44,7 +44,7 @@ public class AppDialogFragment extends BaseDialogFragment {
     }
 
     /**
-     * 初始化
+     * Initialization
      *
      * @param rootView
      */
@@ -83,18 +83,18 @@ public class AppDialogFragment extends BaseDialogFragment {
     }
 
     /**
-     * 初始化对话框
-     * @param context          上下文
-     * @param dialog           对话框
-     * @param gravity          对齐方式
-     * @param widthRatio       宽度比例，根据屏幕宽度计算得来
-     * @param x                x轴偏移量，需与 gravity 结合使用
-     * @param y                y轴偏移量，需与 gravity 结合使用
-     * @param horizontalMargin 水平方向边距
-     * @param verticalMargin   垂直方向边距
-     * @param horizontalWeight 水平方向权重
-     * @param verticalWeight   垂直方向权重
-     * @param animationStyleId 话框动画样式ID
+     * Initialize the dialog
+     * @param context          context
+     * @param dialog           dialog box
+     * @param gravity          alignment
+     * @param widthRatio       width ratio, calculated based on screen width
+     * @param x                x axis offset, needs to be used in conjunction with gravity
+     * @param y                y axis offset, needs to be used in conjunction with gravity
+     * @param horizontalMargin horizontal margin
+     * @param verticalMargin   vertical margin
+     * @param horizontalWeight horizontal weight
+     * @param verticalWeight   vertical weight
+     * @param animationStyleId dialog box animation style ID
      */
     @Override
     protected void initDialogWindow(Context context, Dialog dialog, int gravity, float widthRatio, int x, int y, float horizontalMargin, float verticalMargin, float horizontalWeight, float verticalWeight, int animationStyleId) {

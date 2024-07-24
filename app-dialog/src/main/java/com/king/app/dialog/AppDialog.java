@@ -16,7 +16,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 /**
- * App对话框：封装便捷的对话框API，使用时更简单
+ * App dialog box: encapsulates a convenient dialog box API, making it easier to use
  *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
@@ -24,15 +24,15 @@ public enum AppDialog {
 
     INSTANCE;
     /**
-     * 默认对话框宽度比例（基于屏幕的宽度）
+     * Default dialog width ratio (based on screen width)
      */
     final float DEFAULT_WIDTH_RATIO = 0.85f;
     /**
-     * 对话框
+     * Dialog box
      */
     private Dialog mDialog;
     /**
-     * 标签
+     * Label
      */
     private String mTag;
 
@@ -40,7 +40,7 @@ public enum AppDialog {
     //-------------------------------------------
 
     /**
-     * 点击监听器 - 解散对话框
+     * Click listener - dismiss the dialog
      */
     View.OnClickListener mOnClickDismissDialog = new View.OnClickListener() {
         @Override
@@ -65,7 +65,7 @@ public enum AppDialog {
      * {@link DialogFragment#dismiss()}
      *
      * @param fragmentManager {@link FragmentManager}
-     * @param tag             dialogFragment对应的标签
+     * @param tag             dialogFragment corresponding label
      */
     public void dismissDialogFragment(FragmentManager fragmentManager, String tag) {
         if (tag != null) {
@@ -88,7 +88,7 @@ public enum AppDialog {
     //-------------------------------------------
 
     /**
-     * 显示DialogFragment
+     * Display DialogFragment
      *
      * @param fragmentManager {@link FragmentManager}
      * @param config          {@link AppDialogConfig}
@@ -103,7 +103,7 @@ public enum AppDialog {
     }
 
     /**
-     * 显示DialogFragment
+     * Display DialogFragment
      *
      * @param fragmentManager {@link FragmentManager}
      * @param dialogFragment  {@link DialogFragment}
@@ -117,11 +117,11 @@ public enum AppDialog {
     }
 
     /**
-     * 显示DialogFragment
+     * Display DialogFragment
      *
      * @param fragmentManager {@link FragmentManager}
      * @param dialogFragment  {@link DialogFragment}
-     * @param tag             dialogFragment对应的标签
+     * @param tag             dialogFragment corresponding label
      * @return
      */
     public String showDialogFragment(FragmentManager fragmentManager, DialogFragment dialogFragment, String tag) {
@@ -134,40 +134,40 @@ public enum AppDialog {
     //-------------------------------------------
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param config 弹框配置 {@link AppDialogConfig}
+     * @param config pop-up configuration {@link AppDialogConfig}
      */
     public void showDialog(AppDialogConfig config) {
         showDialog(config, true);
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param config   弹框配置 {@link AppDialogConfig}
-     * @param isCancel 是否可取消（默认为true，false则拦截back键）
+     * @param config   pop-up configuration {@link AppDialogConfig}
+     * @param isCancel whether it is cancelable (default is true, false intercepts the back key)
      */
     public void showDialog(AppDialogConfig config, boolean isCancel) {
         showDialog(config.getContext(), config, isCancel);
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context 上下文
-     * @param config  弹框配置 {@link AppDialogConfig}
+     * @param context context
+     * @param config  pop-up configuration {@link AppDialogConfig}
      */
     public void showDialog(Context context, AppDialogConfig config) {
         showDialog(context, config, true);
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context  上下文
-     * @param config   弹框配置 {@link AppDialogConfig}
-     * @param isCancel 是否可取消（默认为true，false则拦截back键）
+     * @param context  context
+     * @param config   pop-up configuration {@link AppDialogConfig}
+     * @param isCancel whether it is cancelable (default is true, false intercepts the back key)
      */
     public void showDialog(Context context, AppDialogConfig config, boolean isCancel) {
         showDialog(context, config.buildAppDialogView(), config.getStyleId(), config.getGravity(),
@@ -176,44 +176,44 @@ public enum AppDialog {
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
+     * @param context     context
+     * @param contentView pop-up content view
      */
     public void showDialog(Context context, View contentView) {
         showDialog(context, contentView, DEFAULT_WIDTH_RATIO);
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param isCancel    是否可取消（默认为true，false则拦截back键）
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param isCancel    whether it is cancelable (default is true, false intercepts the back key)
      */
     public void showDialog(Context context, View contentView, boolean isCancel) {
         showDialog(context, contentView, R.style.app_dialog, DEFAULT_WIDTH_RATIO, isCancel);
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param widthRatio  width ratio, calculated based on screen width
      */
     public void showDialog(Context context, View contentView, float widthRatio) {
         showDialog(context, contentView, widthRatio, true);
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
-     * @param isCancel    是否可取消（默认为true，false则拦截back键）
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param widthRatio  width ratio, calculated based on screen width
+     * @param isCancel    whether it is cancelable (default is true, false intercepts the back key)
      */
     public void showDialog(Context context, View contentView, float widthRatio, boolean isCancel) {
         showDialog(context, contentView, R.style.app_dialog, widthRatio, isCancel);
@@ -221,51 +221,51 @@ public enum AppDialog {
 
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param styleId     Dialog样式
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param styleId     Dialog style
+     * @param widthRatio  width ratio, calculated based on screen width
      */
     public void showDialog(Context context, View contentView, @StyleRes int styleId, float widthRatio) {
         showDialog(context, contentView, styleId, widthRatio, true);
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param styleId     Dialog样式
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param styleId     Dialog style
+     * @param widthRatio  width ratio, calculated based on screen width
      */
     public void showDialog(Context context, View contentView, @StyleRes int styleId, int gravity, float widthRatio) {
         showDialog(context, contentView, styleId, gravity, widthRatio, true);
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param styleId     Dialog样式
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
-     * @param isCancel    是否可取消（默认为true，false则拦截back键）
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param styleId     Dialog style
+     * @param widthRatio  width ratio, calculated based on screen width
+     * @param isCancel    whether it is cancelable (default is true, false intercepts the back key)
      */
     public void showDialog(Context context, View contentView, @StyleRes int styleId, float widthRatio, final boolean isCancel) {
         showDialog(context, contentView, styleId, Gravity.NO_GRAVITY, widthRatio, isCancel);
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param styleId     Dialog样式
-     * @param gravity     Dialog的对齐方式
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
-     * @param isCancel    是否可取消（默认为true，false则拦截back键）
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param styleId     Dialog style
+     * @param gravity     Dialog alignment
+     * @param widthRatio  width ratio, calculated based on screen width
+     * @param isCancel    whether it is cancelable (default is true, false intercepts the back key)
      */
     public void showDialog(Context context, View contentView, @StyleRes int styleId, int gravity, float widthRatio, final boolean isCancel) {
         showDialog(context, contentView, styleId, gravity, widthRatio, 0, 0, isCancel);
@@ -273,16 +273,16 @@ public enum AppDialog {
 
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param styleId     Dialog样式
-     * @param gravity     Dialog的对齐方式
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
-     * @param x           x轴偏移量，需与 gravity 结合使用
-     * @param y           y轴偏移量，需与 gravity 结合使用
-     * @param isCancel    是否可取消（默认为true，false则拦截back键）
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param styleId     Dialog style
+     * @param gravity     Dialog alignment
+     * @param widthRatio  width ratio, calculated based on screen width
+     * @param x           x axis offset, needs to be used in conjunction with gravity
+     * @param y           y axis offset, needs to be used in conjunction with gravity
+     * @param isCancel    whether it is cancelable (default is true, false intercepts the back key)
      * @return
      */
     public void showDialog(Context context, View contentView, @StyleRes int styleId, int gravity, float widthRatio, int x, int y, final boolean isCancel) {
@@ -290,18 +290,18 @@ public enum AppDialog {
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context          上下文
-     * @param contentView      弹框内容视图
-     * @param styleId          Dialog样式
-     * @param gravity          Dialog的对齐方式
-     * @param widthRatio       宽度比例，根据屏幕宽度计算得来
-     * @param x                x轴偏移量，需与 gravity 结合使用
-     * @param y                y轴偏移量，需与 gravity 结合使用
-     * @param horizontalMargin 水平方向边距
-     * @param verticalMargin   垂直方向边距
-     * @param isCancel         是否可取消（默认为true，false则拦截back键）
+     * @param context          context
+     * @param contentView      pop-up content view
+     * @param styleId          Dialog style
+     * @param gravity          Dialog alignment
+     * @param widthRatio       width ratio, calculated based on screen width
+     * @param x                x axis offset, needs to be used in conjunction with gravity
+     * @param y                y axis offset, needs to be used in conjunction with gravity
+     * @param horizontalMargin horizontal margin
+     * @param verticalMargin   vertical margin
+     * @param isCancel         whether it is cancelable (default is true, false intercepts the back key)
      * @return
      */
     public void showDialog(Context context, View contentView, @StyleRes int styleId, int gravity, float widthRatio, int x, int y, float horizontalMargin, float verticalMargin, final boolean isCancel) {
@@ -309,20 +309,20 @@ public enum AppDialog {
     }
 
     /**
-     * 显示弹框
+     * Show popup
      *
-     * @param context          上下文
-     * @param contentView      弹框内容视图
-     * @param styleId          Dialog样式
-     * @param gravity          Dialog的对齐方式
-     * @param widthRatio       宽度比例，根据屏幕宽度计算得来
-     * @param x                x轴偏移量，需与 gravity 结合使用
-     * @param y                y轴偏移量，需与 gravity 结合使用
-     * @param horizontalMargin 水平方向边距
-     * @param verticalMargin   垂直方向边距
-     * @param horizontalWeight 水平方向权重
-     * @param verticalWeight   垂直方向权重
-     * @param isCancel         是否可取消（默认为true，false则拦截back键）
+     * @param context          context
+     * @param contentView      pop-up content view
+     * @param styleId          Dialog style
+     * @param gravity          Dialog alignment
+     * @param widthRatio       width ratio, calculated based on screen width
+     * @param x                x axis offset, needs to be used in conjunction with gravity
+     * @param y                y axis offset, needs to be used in conjunction with gravity
+     * @param horizontalMargin horizontal margin
+     * @param verticalMargin   vertical margin
+     * @param horizontalWeight horizontal weight
+     * @param verticalWeight   vertical weight
+     * @param isCancel         whether it is cancelable (default is true, false intercepts the back key)
      * @return
      */
     public void showDialog(Context context, View contentView, @StyleRes int styleId, int gravity, float widthRatio, int x, int y, float horizontalMargin, float verticalMargin, float horizontalWeight, float verticalWeight, final boolean isCancel) {
@@ -332,18 +332,18 @@ public enum AppDialog {
     }
 
     /**
-     * 设置弹框窗口配置
+     * Set the pop-up window configuration
      *
-     * @param context          上下文
-     * @param dialog           Dialog对话框
-     * @param gravity          Dialog的对齐方式
-     * @param widthRatio       宽度比例，根据屏幕宽度计算得来
-     * @param x                x轴偏移量，需与 gravity 结合使用
-     * @param y                y轴偏移量，需与 gravity 结合使用
-     * @param horizontalMargin 水平方向边距
-     * @param verticalMargin   垂直方向边距
-     * @param horizontalWeight 水平方向权重
-     * @param verticalWeight   垂直方向权重
+     * @param context          context
+     * @param dialog           Dialog dialog
+     * @param gravity          Dialog alignment
+     * @param widthRatio       width ratio, calculated based on screen width
+     * @param x                x axis offset, needs to be used in conjunction with gravity
+     * @param y                y axis offset, needs to be used in conjunction with gravity
+     * @param horizontalMargin horizontal margin
+     * @param verticalMargin   vertical margin
+     * @param horizontalWeight horizontal weight
+     * @param verticalWeight   vertical weight
      */
     private void setDialogWindow(Context context, Dialog dialog, int gravity, float widthRatio, int x, int y, float horizontalMargin, float verticalMargin, float horizontalWeight, float verticalWeight) {
         Window window = dialog.getWindow();
@@ -360,109 +360,109 @@ public enum AppDialog {
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param config 弹框配置 {@link AppDialogConfig}
+     * @param config pop-up configuration {@link AppDialogConfig}
      */
     public Dialog createDialog(AppDialogConfig config) {
         return createDialog(config, true);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param config   弹框配置 {@link AppDialogConfig}
-     * @param isCancel 是否可取消（默认为true，false则拦截back键）
+     * @param config   pop-up configuration {@link AppDialogConfig}
+     * @param isCancel whether it is cancelable (default is true, false intercepts the back key)
      */
     public Dialog createDialog(AppDialogConfig config, boolean isCancel) {
         return createDialog(config.getContext(), config.buildAppDialogView(), config.getStyleId(), DEFAULT_WIDTH_RATIO, isCancel);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context 上下文
-     * @param config  弹框配置 {@link AppDialogConfig}
+     * @param context context
+     * @param config  pop-up configuration {@link AppDialogConfig}
      */
     public Dialog createDialog(Context context, AppDialogConfig config) {
         return createDialog(context, config, true);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context  上下文
-     * @param config   弹框配置 {@link AppDialogConfig}
-     * @param isCancel 是否可取消（默认为true，false则拦截back键）
+     * @param context  context
+     * @param config   pop-up configuration {@link AppDialogConfig}
+     * @param isCancel whether it is cancelable (default is true, false intercepts the back key)
      */
     public Dialog createDialog(Context context, AppDialogConfig config, boolean isCancel) {
         return createDialog(context, config.buildAppDialogView(), config.getStyleId(), DEFAULT_WIDTH_RATIO, isCancel);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
+     * @param context     context
+     * @param contentView pop-up content view
      */
     public Dialog createDialog(Context context, View contentView) {
         return createDialog(context, contentView, DEFAULT_WIDTH_RATIO);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param isCancel    是否可取消（默认为true，false则拦截back键）
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param isCancel    whether it is cancelable (default is true, false intercepts the back key)
      */
     public Dialog createDialog(Context context, View contentView, boolean isCancel) {
         return createDialog(context, contentView, R.style.app_dialog, DEFAULT_WIDTH_RATIO, isCancel);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param widthRatio  width ratio, calculated based on screen width
      */
     public Dialog createDialog(Context context, View contentView, float widthRatio) {
         return createDialog(context, contentView, widthRatio, true);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
-     * @param isCancel    是否可取消（默认为true，false则拦截back键）
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param widthRatio  width ratio, calculated based on screen width
+     * @param isCancel    whether it is cancelable (default is true, false intercepts the back key)
      */
     public Dialog createDialog(Context context, View contentView, float widthRatio, boolean isCancel) {
         return createDialog(context, contentView, R.style.app_dialog, widthRatio, isCancel);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param styleId     Dialog样式
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param styleId     Dialog style
+     * @param widthRatio  width ratio, calculated based on screen width
      */
     public Dialog createDialog(Context context, View contentView, @StyleRes int styleId, float widthRatio) {
         return createDialog(context, contentView, styleId, Gravity.NO_GRAVITY, widthRatio, true);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param styleId     Dialog样式
-     * @param gravity     Dialog的对齐方式
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param styleId     Dialog style
+     * @param gravity     Dialog alignment
+     * @param widthRatio  width ratio, calculated based on screen width
      */
     public Dialog createDialog(Context context, View contentView, @StyleRes int styleId, int gravity, float widthRatio) {
         return createDialog(context, contentView, styleId, gravity, widthRatio, true);
@@ -470,43 +470,43 @@ public enum AppDialog {
 
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param styleId     Dialog样式
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
-     * @param isCancel    是否可取消（默认为true，false则拦截back键）
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param styleId     Dialog style
+     * @param widthRatio  width ratio, calculated based on screen width
+     * @param isCancel    whether it is cancelable (default is true, false intercepts the back key)
      */
     public Dialog createDialog(Context context, View contentView, @StyleRes int styleId, float widthRatio, final boolean isCancel) {
         return createDialog(context, contentView, styleId, Gravity.NO_GRAVITY, widthRatio, isCancel);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param styleId     Dialog样式
-     * @param gravity     Dialog的对齐方式
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
-     * @param isCancel    是否可取消（默认为true，false则拦截back键）
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param styleId     Dialog style
+     * @param gravity     Dialog alignment
+     * @param widthRatio  width ratio, calculated based on screen width
+     * @param isCancel    whether it is cancelable (default is true, false intercepts the back key)
      */
     public Dialog createDialog(Context context, View contentView, @StyleRes int styleId, int gravity, float widthRatio, final boolean isCancel) {
         return createDialog(context, contentView, styleId, gravity, widthRatio, 0, 0, isCancel);
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context     上下文
-     * @param contentView 弹框内容视图
-     * @param styleId     Dialog样式
-     * @param gravity     Dialog的对齐方式
-     * @param widthRatio  宽度比例，根据屏幕宽度计算得来
-     * @param x           x轴偏移量，需与 gravity 结合使用
-     * @param y           y轴偏移量，需与 gravity 结合使用
-     * @param isCancel    是否可取消（默认为true，false则拦截back键）
+     * @param context     context
+     * @param contentView pop-up content view
+     * @param styleId     Dialog style
+     * @param gravity     Dialog alignment
+     * @param widthRatio  width ratio, calculated based on screen width
+     * @param x           x axis offset, needs to be used in conjunction with gravity
+     * @param y           y axis offset, needs to be used in conjunction with gravity
+     * @param isCancel    whether it is cancelable (default is true, false intercepts the back key)
      * @return
      */
     public Dialog createDialog(Context context, View contentView, @StyleRes int styleId, int gravity, float widthRatio, int x, int y, final boolean isCancel) {
@@ -514,18 +514,18 @@ public enum AppDialog {
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context          上下文
-     * @param contentView      弹框内容视图
-     * @param styleId          Dialog样式
-     * @param gravity          Dialog的对齐方式
-     * @param widthRatio       宽度比例，根据屏幕宽度计算得来
-     * @param x                x轴偏移量，需与 gravity 结合使用
-     * @param y                y轴偏移量，需与 gravity 结合使用
-     * @param horizontalMargin 水平方向边距
-     * @param verticalMargin   垂直方向边距
-     * @param isCancel         是否可取消（默认为true，false则拦截back键）
+     * @param context          context
+     * @param contentView      pop-up content view
+     * @param styleId          Dialog style
+     * @param gravity Dialog alignment
+     * @param widthRatio       width ratio, calculated based on screen width
+     * @param x                x axis offset, needs to be used in conjunction with gravity
+     * @param y                y axis offset, needs to be used in conjunction with gravity
+     * @param horizontalMargin horizontal margin
+     * @param verticalMargin vertical margin
+     * @param isCancel whether it is cancelable (default is true, false intercepts the back key)
      * @return
      */
     public Dialog createDialog(Context context, View contentView, @StyleRes int styleId, int gravity, float widthRatio, int x, int y, float horizontalMargin, float verticalMargin, final boolean isCancel) {
@@ -533,20 +533,20 @@ public enum AppDialog {
     }
 
     /**
-     * 创建弹框
+     * Create a popup
      *
-     * @param context          上下文
-     * @param contentView      弹框内容视图
-     * @param styleId          Dialog样式
-     * @param gravity          Dialog的对齐方式
-     * @param widthRatio       宽度比例，根据屏幕宽度计算得来
-     * @param x                x轴偏移量，需与 gravity 结合使用
-     * @param y                y轴偏移量，需与 gravity 结合使用
-     * @param horizontalMargin 水平方向边距
-     * @param verticalMargin   垂直方向边距
-     * @param horizontalWeight 水平方向权重
-     * @param verticalWeight   垂直方向权重
-     * @param isCancel         是否可取消（默认为true，false则拦截back键）
+     * @param context          context
+     * @param contentView      pop-up content view
+     * @param styleId          Dialog style
+     * @param gravity          Dialog alignment
+     * @param widthRatio       width ratio, calculated based on screen width
+     * @param x                x axis offset, needs to be used in conjunction with gravity
+     * @param y                y axis offset, needs to be used in conjunction with gravity
+     * @param horizontalMargin horizontal margin
+     * @param verticalMargin   vertical margin
+     * @param horizontalWeight horizontal weight
+     * @param verticalWeight   vertical weight
+     * @param isCancel         whether it is cancelable (default is true, false intercepts the back key)
      * @return
      */
     public Dialog createDialog(Context context, View contentView, @StyleRes int styleId, int gravity, float widthRatio, int x, int y, float horizontalMargin, float verticalMargin, float horizontalWeight, float verticalWeight, final boolean isCancel) {
@@ -571,7 +571,7 @@ public enum AppDialog {
     }
 
     /**
-     * 获取Dialog
+     * Get Dialog
      *
      * @return {@link #mDialog}
      */

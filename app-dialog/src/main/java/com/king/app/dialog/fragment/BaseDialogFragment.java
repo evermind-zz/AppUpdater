@@ -20,17 +20,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 /**
- * 基础对话框 Fragment
+ * Basic dialog Fragment
  *
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public abstract class BaseDialogFragment extends DialogFragment {
     /**
-     * 默认对话框宽度比例（基于屏幕的宽度）
+     * Default dialog width ratio (based on screen width)
      */
     protected static final float DEFAULT_WIDTH_RATIO = 0.85f;
     /**
-     * 根视图
+     * Root view
      */
     private View mRootView;
 
@@ -54,38 +54,38 @@ public abstract class BaseDialogFragment extends DialogFragment {
     }
 
     /**
-     * 初始化对话框视图
+     * Initialize the dialog view
      *
-     * @param context          上下文
-     * @param dialog           对话框
-     * @param gravity          对齐方式
-     * @param widthRatio       宽度比例，根据屏幕宽度计算得来
-     * @param x                x轴偏移量，需与 gravity 结合使用
-     * @param y                y轴偏移量，需与 gravity 结合使用
-     * @param horizontalMargin 水平方向边距
-     * @param verticalMargin   垂直方向边距
-     * @param horizontalWeight 水平方向权重
-     * @param verticalWeight   垂直方向权重
-     * @param animationStyleId 话框动画样式ID
+     * @param context          context
+     * @param dialog           dialog box
+     * @param gravity          alignment
+     * @param widthRatio       width ratio, calculated based on screen width
+     * @param x                x axis offset, needs to be used in conjunction with gravity
+     * @param y                y axis offset, needs to be used in conjunction with gravity
+     * @param horizontalMargin horizontal margin
+     * @param verticalMargin   vertical margin
+     * @param horizontalWeight horizontal weight
+     * @param verticalWeight   vertical weight
+     * @param animationStyleId dialog box animation style ID
      */
     protected void initDialogWindow(Context context, Dialog dialog, int gravity, float widthRatio, int x, int y, float horizontalMargin, float verticalMargin, float horizontalWeight, float verticalWeight, int animationStyleId) {
         setDialogWindow(context, dialog, gravity, widthRatio, x, y, horizontalMargin, verticalMargin, horizontalWeight, verticalWeight, animationStyleId);
     }
 
     /**
-     * 设置弹框窗口配置
+     * Set the pop-up window configuration
      *
      * @param context
      * @param dialog
-     * @param gravity          Dialog的对齐方式
-     * @param widthRatio       宽度比例，根据屏幕宽度计算得来
-     * @param x                x轴偏移量，需与 gravity 结合使用
-     * @param y                y轴偏移量，需与 gravity 结合使用
-     * @param horizontalMargin 水平方向边距
-     * @param verticalMargin   垂直方向边距
-     * @param horizontalWeight 水平方向权重
-     * @param verticalWeight   垂直方向权重
-     * @param animationStyleId 动画样式
+     * @param gravity          Dialog alignment
+     * @param widthRatio       width ratio, calculated based on screen width
+     * @param x                x axis offset, needs to be used in conjunction with gravity
+     * @param y                y axis offset, needs to be used in conjunction with gravity
+     * @param horizontalMargin horizontal margin
+     * @param verticalMargin   vertical margin
+     * @param horizontalWeight horizontal weight
+     * @param verticalWeight   vertical weight
+     * @param animationStyleId animation style
      */
     private void setDialogWindow(Context context, Dialog dialog, int gravity, float widthRatio, int x, int y, float horizontalMargin, float verticalMargin, float horizontalWeight, float verticalWeight, int animationStyleId) {
         Window window = dialog.getWindow();
@@ -104,7 +104,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     }
 
     /**
-     * 获取根视图
+     * Get the root view
      *
      * @return
      */
@@ -113,7 +113,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     }
 
     /**
-     * 设置文本
+     * Set the text
      *
      * @param tv   {@link TextView}
      * @param text {@link CharSequence}
@@ -125,7 +125,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     }
 
     /**
-     * 点击监听器 - 解散对话框
+     * Click listener - dismiss the dialog
      *
      * @return {@link View.OnClickListener}
      */
@@ -141,14 +141,14 @@ public abstract class BaseDialogFragment extends DialogFragment {
     };
 
     /**
-     * 获取根布局ID
+     * Get the root layout ID
      *
-     * @return 根布局ID
+     * @return root layout ID
      */
     public abstract int getRootLayoutId();
 
     /**
-     * 初始化
+     * Initialization
      *
      * @param rootView
      */

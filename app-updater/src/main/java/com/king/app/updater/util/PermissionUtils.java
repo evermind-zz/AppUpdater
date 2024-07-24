@@ -11,7 +11,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 /**
- * 权限工具
+ * Permission Tools
  *
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
@@ -22,7 +22,7 @@ public final class PermissionUtils {
     }
 
     /**
-     * 校验权限
+     * Verify permissions
      *
      * @param activity
      * @param requestCode
@@ -43,7 +43,7 @@ public final class PermissionUtils {
     }
 
     /**
-     * 检查权限
+     * Check permissions
      *
      * @param context
      * @param permission
@@ -54,7 +54,7 @@ public final class PermissionUtils {
     }
 
     /**
-     * 通知栏是否启用
+     * Whether the notification bar is enabled
      *
      * @param context
      */

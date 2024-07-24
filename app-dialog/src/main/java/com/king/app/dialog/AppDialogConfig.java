@@ -29,7 +29,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
 /**
- * App 对话框配置
+ * App dialog configuration
  *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
@@ -44,19 +44,19 @@ public class AppDialogConfig extends BaseDialogConfig {
     private ViewHolder viewHolder;
 
     /**
-     * 构造
+     * Construction
      *
-     * @param context 上下文
+     * @param context context
      */
     public AppDialogConfig(@NonNull Context context) {
         this(context, R.layout.app_dialog);
     }
 
     /**
-     * 构造
+     * Construction
      *
-     * @param context  上下文
-     * @param layoutId 布局ID
+     * @param context context
+     * @param layoutId layout ID
      */
     public AppDialogConfig(@NonNull Context context, @LayoutRes int layoutId) {
         super(layoutId);
@@ -65,7 +65,7 @@ public class AppDialogConfig extends BaseDialogConfig {
     }
 
     /**
-     * 获取上下文
+     * Get context
      *
      * @return {@link #context}
      */
@@ -74,11 +74,11 @@ public class AppDialogConfig extends BaseDialogConfig {
     }
 
     /**
-     * 获取对话框视图
+     * Get the dialog view
      *
-     * @param context 上下文
-     * @return 对话框视图
-     * @deprecated 即将废弃，下一个版本可能会移除此方法。
+     * @param context context
+     * @return dialog view
+     * @deprecated This method will be deprecated soon and may be removed in the next version.
      */
     @Deprecated
     public View getView(@NonNull Context context) {
@@ -86,9 +86,9 @@ public class AppDialogConfig extends BaseDialogConfig {
     }
 
     /**
-     * 获取对话框视图
+     * Get the dialog view
      *
-     * @return 对话框视图
+     * @return dialog view
      */
     private View getDialogView() {
         if (view == null) {
@@ -98,22 +98,22 @@ public class AppDialogConfig extends BaseDialogConfig {
     }
 
     /**
-     * 通过视图ID查找对应的视图
+     * Find the corresponding view by view ID
      *
-     * @param id  视图ID
-     * @param <T> 对应的视图类
-     * @return 视图ID对应的视图
+     * @param id view ID
+     * @param <T> corresponding view class
+     * @return The view corresponding to the view ID
      */
     private <T extends View> T findView(@IdRes int id) {
         return getDialogView().findViewById(id);
     }
 
     /**
-     * 根据视图ID获取对应的视图
+     * Get the corresponding view according to the view ID
      *
-     * @param id  视图ID
-     * @param <T> 对应的视图类
-     * @return 视图ID对应的视图
+     * @param id view ID
+     * @param <T> corresponding view class
+     * @return The view corresponding to the view ID
      */
     @SuppressWarnings("unchecked")
     public <T extends View> T getView(@IdRes int id) {
@@ -127,7 +127,7 @@ public class AppDialogConfig extends BaseDialogConfig {
     }
 
     /**
-     * 通过{@link AppDialogConfig} 创建一个视图
+     * Create a view via {@link AppDialogConfig}
      *
      * @return {@link View}
      */
@@ -166,7 +166,7 @@ public class AppDialogConfig extends BaseDialogConfig {
     }
 
     /**
-     * 设置文本
+     * Set the text
      *
      * @param tv   {@link TextView}
      * @param text {@link CharSequence}
@@ -178,7 +178,7 @@ public class AppDialogConfig extends BaseDialogConfig {
     }
 
     /**
-     * 获取 {@link ViewHolder}
+     * Get {@link ViewHolder}
      *
      * @return {@link ViewHolder}
      */
@@ -191,7 +191,7 @@ public class AppDialogConfig extends BaseDialogConfig {
 
 
     /**
-     * ViewHolder主要提供视图控件的一些常用设置（适用于Dialog，不适用于DialogFragment）
+     * ViewHolder mainly provides some common settings for view controls (applicable to Dialog, not applicable to DialogFragment)
      */
     public final class ViewHolder {
 
@@ -199,14 +199,14 @@ public class AppDialogConfig extends BaseDialogConfig {
 
         }
 
-        //---------------------- 控件常用设置
+        //--------------------- Common settings for controls
 
         /**
-         * 设置视图的背景色
+         * Set the background color of the view
          * {@link View#setBackgroundResource(int)}
          *
-         * @param id    视图ID
-         * @param resId Drawable资源ID
+         * @param id    view ID
+         * @param resId Drawable resource ID
          * @return {@link View}
          */
         public View setBackgroundResource(@IdRes int id, @DrawableRes int resId) {
@@ -216,10 +216,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的背景色
+         * Set the background color of the view
          * {@link View#setBackground(Drawable)}
          *
-         * @param id       视图ID
+         * @param id       view ID
          * @param drawable {@link Drawable}
          * @return {@link View}
          */
@@ -231,11 +231,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的背景色
+         * Set the background color of the view
          * {@link View#setBackgroundColor(int)}
          *
-         * @param id    视图ID
-         * @param color 颜色
+         * @param id    view ID
+         * @param color color
          * @return {@link View}
          */
         public View setBackgroundColor(@IdRes int id, @ColorInt int color) {
@@ -245,11 +245,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的标签
+         * Set the view's label
          * {@link View#setTag(Object)}
          *
-         * @param id  视图ID
-         * @param tag 标签
+         * @param id  view ID
+         * @param tag tag
          * @return {@link View}
          */
         public View setTag(@IdRes int id, Object tag) {
@@ -259,12 +259,12 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的标签
+         * Set the view's label
          * {@link View#setTag(int, Object)}
          *
-         * @param id  视图ID
-         * @param key 标签的key
-         * @param tag 标签
+         * @param id  view ID
+         * @param key tag key
+         * @param tag tag
          * @return {@link View}
          */
         public View setTag(@IdRes int id, int key, Object tag) {
@@ -274,11 +274,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的可见性
+         * Set the visibility of the view
          * {@link View#setVisibility(int)}
          *
-         * @param id         视图ID
-         * @param visibility 可见性
+         * @param id         view ID
+         * @param visibility visibility
          * @return {@link View}
          */
         public View setVisibility(@IdRes int id, int visibility) {
@@ -288,11 +288,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的可见性
+         * Set the visibility of the view
          * {@link View#setVisibility(int)}
          *
-         * @param id        视图ID
-         * @param isVisible 是否可见；true时设置为：{@link View#VISIBLE}；false时设置为：{@link View#GONE}
+         * @param id        view ID
+         * @param isVisible Whether it is visible; when true, it is set to: {@link View#VISIBLE}; when false, it is set to: {@link View#GONE}
          * @return {@link View}
          */
         public View setVisibility(@IdRes int id, boolean isVisible) {
@@ -306,11 +306,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的可见性
+         * Set the visibility of the view
          * {@link View#setVisibility(int)}
          *
-         * @param id        视图ID
-         * @param isVisible 是否可见；true时设置为：{@link View#VISIBLE}；false时设置为：{@link View#INVISIBLE}
+         * @param id        view ID
+         * @param isVisible Whether it is visible; when true, it is set to: {@link View#VISIBLE}; when false, it is set to: {@link View#INVISIBLE}
          * @return {@link View}
          */
         public View setInVisibility(@IdRes int id, boolean isVisible) {
@@ -324,11 +324,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的透明度
+         * Set the transparency of the view
          * {@link View#setAlpha(float)}
          *
-         * @param id    视图ID
-         * @param alpha 透明度
+         * @param id    view ID
+         * @param alpha transparency
          * @return {@link View}
          */
         public View setAlpha(@IdRes int id, float alpha) {
@@ -338,10 +338,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图左方的复合绘图 {@link Drawable}
+         * Set the composite drawing {@link Drawable} on the left side of the view
          * {@link #setCompoundDrawables(int, Drawable, Drawable, Drawable, Drawable)}
          *
-         * @param id       视图ID
+         * @param id       view ID
          * @param drawable {@link Drawable}
          * @return {@link TextView}
          */
@@ -350,10 +350,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图上方的复合绘图 {@link Drawable}
+         * Set the composite drawing {@link Drawable} above the view
          * {@link #setCompoundDrawables(int, Drawable, Drawable, Drawable, Drawable)}
          *
-         * @param id       视图ID
+         * @param id       view ID
          * @param drawable {@link Drawable}
          * @return {@link TextView}
          */
@@ -362,10 +362,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图右方的复合绘图 {@link Drawable}
+         * Set the composite drawing {@link Drawable} to the right of the view
          * {@link #setCompoundDrawables(int, Drawable, Drawable, Drawable, Drawable)}
          *
-         * @param id       视图ID
+         * @param id       view ID
          * @param drawable {@link Drawable}
          * @return {@link TextView}
          */
@@ -374,10 +374,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图下方的复合绘图 {@link Drawable}
+         * Set the composite drawing {@link Drawable} below the view
          * {@link #setCompoundDrawables(int, Drawable, Drawable, Drawable, Drawable)}
          *
-         * @param id       视图ID
+         * @param id       view ID
          * @param drawable {@link Drawable}
          * @return {@link TextView}
          */
@@ -386,14 +386,14 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的复合绘图 {@link Drawable}
+         * Set the view's composite drawing {@link Drawable}
          * {@link TextView#setCompoundDrawables(Drawable, Drawable, Drawable, Drawable)}
          *
-         * @param id     视图ID
-         * @param left   左方的Drawable
-         * @param top    上方的Drawable
-         * @param right  右方的Drawable
-         * @param bottom 下方的Drawable
+         * @param id     view ID
+         * @param left   Drawable on the left
+         * @param top    Drawable above
+         * @param right  Drawable on the right
+         * @param bottom Drawable below
          * @return {@link TextView}
          */
         public TextView setCompoundDrawables(@IdRes int id, Drawable left, Drawable top, Drawable right, Drawable bottom) {
@@ -403,11 +403,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的可填充内距
+         * Set the view's fillable padding
          * {@link TextView#setCompoundDrawablePadding(int)}
          *
-         * @param id      视图ID
-         * @param padding 内填充间距
+         * @param id      view ID
+         * @param padding internal padding spacing
          * @return
          */
         public TextView setCompoundDrawablePadding(@IdRes int id, int padding) {
@@ -417,14 +417,14 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置视图的内在的复合绘图 {@link Drawable}
+         * Set the view's intrinsic composite drawing {@link Drawable}
          * {@link TextView#setCompoundDrawablesWithIntrinsicBounds(int, int, int, int)}
          *
-         * @param id     视图ID
-         * @param left   左方的Drawable
-         * @param top    上方的Drawable
-         * @param right  右方的Drawable
-         * @param bottom 下方的Drawable
+         * @param id     view ID
+         * @param left   Drawable on the left
+         * @param top    Drawable above
+         * @param right  Drawable on the right
+         * @param bottom Drawable below
          * @return {@link TextView}
          */
         public TextView setCompoundDrawablesWithIntrinsicBounds(@IdRes int id, @Nullable Drawable left, @Nullable Drawable top, @Nullable Drawable right, @Nullable Drawable bottom) {
@@ -434,11 +434,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置文本内容
+         * Set the text content
          * {@link TextView#setText(int)}
          *
-         * @param id    视图ID
-         * @param resId 字符串资源ID
+         * @param id    view ID
+         * @param resId string resource ID
          * @return {@link TextView}
          */
         public TextView setText(@IdRes int id, @StringRes int resId) {
@@ -448,11 +448,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置文本内容
+         * Set the text content
          * {@link TextView#setText(CharSequence)}
          *
-         * @param id   视图ID
-         * @param text 文本
+         * @param id   view ID
+         * @param text text
          * @return {@link TextView}
          */
         public TextView setText(@IdRes int id, CharSequence text) {
@@ -462,11 +462,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置字体颜色
+         * Set the font color
          * {@link TextView#setTextColor(int)}
          *
-         * @param id    视图ID
-         * @param color 颜色
+         * @param id    view ID
+         * @param color color
          * @return {@link TextView}
          */
         public TextView setTextColor(@IdRes int id, int color) {
@@ -476,11 +476,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置字体颜色
+         * Set the font color
          * {@link TextView#setTextColor(ColorStateList)}
          *
-         * @param id     视图ID
-         * @param colors 颜色状态列表
+         * @param id     view ID
+         * @param colors color state list
          * @return {@link TextView}
          */
         public TextView setTextColor(@IdRes int id, @NonNull ColorStateList colors) {
@@ -490,11 +490,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置字体大小
+         * Set the font size
          * {@link TextView#setTextSize(float)}
          *
-         * @param id   视图ID
-         * @param size 字体大小（单位：sp）
+         * @param id   view ID
+         * @param size font size (unit: sp)
          * @return {@link TextView}
          */
         public TextView setTextSize(@IdRes int id, float size) {
@@ -502,12 +502,12 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置字体大小
+         * Set the font size
          * {@link TextView#setTextSize(int, float)}
          *
-         * @param id   视图ID
-         * @param unit 单位；推荐使用 {@link TypedValue#COMPLEX_UNIT_SP}
-         * @param size 字体大小
+         * @param id   view ID
+         * @param unit unit; it is recommended to use {@link TypedValue#COMPLEX_UNIT_SP}
+         * @param size font size
          * @return {@link TextView}
          */
         public TextView setTextSize(@IdRes int id, int unit, float size) {
@@ -517,11 +517,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置字体
+         * Set the font
          * {@link TextView#setTypeface(Typeface)}
          *
-         * @param id 视图ID
-         * @param tf 字体
+         * @param id view ID
+         * @param tf font
          * @return {@link TextView}
          */
         public TextView setTypeface(@IdRes int id, @Nullable Typeface tf) {
@@ -531,12 +531,12 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置字体
+         * Set the font
          * {@link TextView#setTypeface(Typeface, int)}
          *
-         * @param id    视图ID
-         * @param tf    字体
-         * @param style 字体样式
+         * @param id    view ID
+         * @param tf    font
+         * @param style font style
          * @return {@link TextView}
          */
         public TextView setTypeface(@IdRes int id, @Nullable Typeface tf, int style) {
@@ -546,10 +546,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 添加链接
+         * Add a link
          * {@link #addLinks(int, int)}
          *
-         * @param id 视图ID
+         * @param id view ID
          * @return {@link TextView}
          */
         public TextView addLinks(@IdRes int id) {
@@ -557,11 +557,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 添加链接
+         * Add a link
          * {@link Linkify#addLinks(TextView, int)}
          *
-         * @param id   视图ID
-         * @param mask 连接掩码；如：{@link Linkify#ALL}
+         * @param id   view ID
+         * @param mask connection mask; such as: {@link Linkify#ALL}
          * @return {@link TextView}
          */
         public TextView addLinks(@IdRes int id, int mask) {
@@ -571,12 +571,12 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 添加链接
+         * Add a link
          * {@link Linkify#addLinks(TextView, Pattern, String)}
          *
-         * @param id      视图ID
-         * @param pattern 正则表达式模式
-         * @param scheme  方案
+         * @param id      view ID
+         * @param pattern regular expression pattern
+         * @param scheme  scheme
          * @return {@link TextView}
          */
         public TextView addLinks(@IdRes int id, @NonNull Pattern pattern, @Nullable String scheme) {
@@ -586,11 +586,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 根据Drawable资源ID设置图像
+         * Set the image according to the Drawable resource ID
          * {@link ImageView#setImageResource(int)}
          *
-         * @param id    视图ID
-         * @param resId Drawable资源ID
+         * @param id    view ID
+         * @param resId Drawable resource ID
          * @return {@link ImageView}
          */
         public ImageView setImageResource(@IdRes int id, @DrawableRes int resId) {
@@ -600,11 +600,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 根据位图设置图像
+         * Set the image according to the bitmap
          * {@link ImageView#setImageBitmap(Bitmap)}
          *
-         * @param id     视图ID
-         * @param bitmap 位图
+         * @param id     view ID
+         * @param bitmap bitmap
          * @return {@link ImageView}
          */
         public ImageView setImageBitmap(@IdRes int id, Bitmap bitmap) {
@@ -614,10 +614,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 根据 {@link Drawable} 设置图像
+         * Set the image based on {@link Drawable}
          * {@link ImageView#setImageResource(int)}
          *
-         * @param id       视图ID
+         * @param id       view ID
          * @param drawable {@link Drawable}
          * @return {@link ImageView}
          */
@@ -628,11 +628,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置是否选中
+         * Set whether to select
          * {@link CompoundButton#setChecked(boolean)}
          *
-         * @param id        视图ID
-         * @param isChecked 是否选中
+         * @param id        view ID
+         * @param isChecked whether it is checked
          * @return {@link CompoundButton}
          */
         public CompoundButton setChecked(@IdRes int id, boolean isChecked) {
@@ -642,10 +642,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 是否选中
+         * Checked
          * {@link CompoundButton#isChecked()}
          *
-         * @param id 视图ID
+         * @param id view ID
          * @return {@code true} or {@code false}
          */
         public boolean isChecked(@IdRes int id) {
@@ -654,10 +654,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 切换
+         * Switch
          * {@link CompoundButton#toggle()}
          *
-         * @param id 视图ID
+         * @param id view ID
          * @return {@link CompoundButton}
          */
         public CompoundButton toggle(@IdRes int id) {
@@ -667,11 +667,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置进度值
+         * Set the progress value
          * {@link ProgressBar#setProgress(int)}
          *
-         * @param id       视图ID
-         * @param progress 进度
+         * @param id       view ID
+         * @param progress progress
          * @return {@link ProgressBar}
          */
         public ProgressBar setProgress(@IdRes int id, int progress) {
@@ -681,11 +681,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置最大进度值
+         * Set the maximum progress value
          * {@link ProgressBar#setMax(int)}
          *
-         * @param id  视图ID
-         * @param max 最大进度值
+         * @param id  view ID
+         * @param max maximum progress value
          * @return {@link ProgressBar}
          */
         public ProgressBar setMax(@IdRes int id, int max) {
@@ -695,11 +695,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置评分
+         * Set rating
          * {@link RatingBar#setRating(float)}
          *
-         * @param id     视图ID
-         * @param rating 评分
+         * @param id     view ID
+         * @param rating Rating
          * @return {@link RatingBar}
          */
         public RatingBar setRating(@IdRes int id, float rating) {
@@ -709,12 +709,12 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置评分和最大评分值
+         * Set the rating and maximum rating value
          * {@link RatingBar#setRating(float)} and {@link RatingBar#setMax(int)}
          *
-         * @param id     视图ID
-         * @param rating 评分
-         * @param max    最大评分值
+         * @param id     view ID
+         * @param rating Rating
+         * @param max    maximum score value
          * @return {@link RatingBar}
          */
         public RatingBar setRating(@IdRes int id, float rating, int max) {
@@ -725,11 +725,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置星星数量
+         * Set the number of stars
          * {@link RatingBar#setNumStars(int)}
          *
-         * @param id       视图ID
-         * @param numStars 星星数量
+         * @param id       view ID
+         * @param numStars number of stars
          * @return {@link RatingBar}
          */
         public RatingBar setNumStars(@IdRes int id, int numStars) {
@@ -739,11 +739,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置是否选择
+         * Set whether to select
          * {@link View#setSelected(boolean)}
          *
-         * @param id       视图ID
-         * @param selected 是否选择
+         * @param id       view ID
+         * @param selected whether to select
          * @return {@link View}
          */
         public View setSelected(@IdRes int id, boolean selected) {
@@ -753,10 +753,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 是否选择
+         * Select
          * {@link View#isSelected()}
          *
-         * @param id 视图ID
+         * @param id view ID
          * @return {@code true} or {@code false}
          */
         public boolean isSelected(@IdRes int id) {
@@ -764,11 +764,11 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置是否启用
+         * Set whether to enable
          * {@link View#setEnabled(boolean)}
          *
-         * @param id      视图ID
-         * @param enabled 是否启用
+         * @param id      view ID
+         * @param enabled whether to enable
          * @return {@link View}
          */
         public View setEnabled(@IdRes int id, boolean enabled) {
@@ -778,10 +778,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 是否启用
+         * Whether to enable
          * {@link View#isEnabled()}
          *
-         * @param id 视图ID
+         * @param id view ID
          * @return {@code true} or {@code false}
          */
         public boolean isEnabled(@IdRes int id) {
@@ -789,13 +789,13 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
 
-        //---------------------- 监听事件
+        //--------------------- Listen for events
 
         /**
-         * 设置点击监听事
+         * Set click listener
          * {@link View#setOnClickListener(View.OnClickListener)}
          *
-         * @param id              视图ID
+         * @param id              view ID
          * @param onClickListener {@link View.OnClickListener}
          */
         public void setOnClickListener(@IdRes int id, View.OnClickListener onClickListener) {
@@ -803,10 +803,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置触摸监听
+         * Set touch monitoring
          * {@link View#setOnTouchListener(View.OnTouchListener)}
          *
-         * @param id              视图ID
+         * @param id              view ID
          * @param onTouchListener {@link View.OnTouchListener}
          */
         public void setOnTouchListener(@IdRes int id, View.OnTouchListener onTouchListener) {
@@ -814,10 +814,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置长按监听
+         * Set long press monitoring
          * {@link View#setOnLongClickListener(View.OnLongClickListener)}
          *
-         * @param id                  视图ID
+         * @param id                  view ID
          * @param onLongClickListener {@link View.OnLongClickListener}
          */
         public void setOnLongClickListener(@IdRes int id, View.OnLongClickListener onLongClickListener) {
@@ -825,10 +825,10 @@ public class AppDialogConfig extends BaseDialogConfig {
         }
 
         /**
-         * 设置按键监听
+         * Set up key monitoring
          * {@link View#setOnKeyListener(View.OnKeyListener)}
          *
-         * @param id            视图ID
+         * @param id            view ID
          * @param onKeyListener {@link View.OnKeyListener}
          */
         public void setOnKeyListener(@IdRes int id, View.OnKeyListener onKeyListener) {

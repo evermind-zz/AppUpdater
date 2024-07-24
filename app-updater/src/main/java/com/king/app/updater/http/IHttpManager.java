@@ -7,14 +7,14 @@ import java.util.Map;
 import androidx.annotation.Nullable;
 
 /**
- * IHttpManager 默认提供 {@link HttpManager} 和 {@link OkHttpManager} 两种实现。
+ * IHttpManager provides two implementations by default: {@link HttpManager} and {@link OkHttpManager}.
  *
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public interface IHttpManager {
 
     /**
-     * 下载
+     * download
      *
      * @param url
      * @param saveFilePath
@@ -24,20 +24,20 @@ public interface IHttpManager {
     void download(String url, String saveFilePath, @Nullable Map<String, String> requestProperty, DownloadCallback callback);
 
     /**
-     * 取消下载
+     * Cancel download
      */
     void cancel();
 
     interface DownloadCallback extends Serializable {
         /**
-         * 开始
+         * start
          *
          * @param url
          */
         void onStart(String url);
 
         /**
-         * 加载进度…
+         * Loading progress...
          *
          * @param progress
          * @param total
@@ -45,21 +45,21 @@ public interface IHttpManager {
         void onProgress(long progress, long total);
 
         /**
-         * 完成
+         * Finish
          *
          * @param file
          */
         void onFinish(File file);
 
         /**
-         * 错误
+         * mistake
          *
          * @param e
          */
         void onError(Exception e);
 
         /**
-         * 取消
+         * Cancel
          */
         void onCancel();
     }

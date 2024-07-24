@@ -9,75 +9,75 @@ import java.io.File;
 import androidx.annotation.DrawableRes;
 
 /**
- * 通知栏进度更新
+ * Notification bar progress update
  *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public interface INotification {
     /**
-     * 开始
+     * start
      *
-     * @param context                 上下文
-     * @param notifyId                通知ID
-     * @param channelId               通知通道ID
-     * @param channelName             通知通道名称
-     * @param smallIcon               通知图标
-     * @param title                   通知标题
-     * @param content                 通知内容
-     * @param isVibrate               通知是否允许震动
-     * @param isSound                 通知是否有铃声
-     * @param isSupportCancelDownload 是否支持取消下载
+     * @param context                 context
+     * @param notifyId                Notification ID
+     * @param channelId               notification channel ID
+     * @param channelName             notification channel name
+     * @param smallIcon               notification icon
+     * @param title Notification      title
+     * @param content Notification    content
+     * @param isVibrate Notification  whether vibration is allowed
+     * @param isSound                 Whether the notification has a ringtone
+     * @param isSupportCancelDownload whether to support canceling download
      */
     void onStart(Context context, int notifyId, String channelId, String channelName, @DrawableRes int smallIcon, CharSequence title, CharSequence content, boolean isVibrate, boolean isSound, boolean isSupportCancelDownload);
 
     /**
-     * 更新进度
+     * Update progress
      *
-     * @param context                 上下文
-     * @param notifyId                通知ID
-     * @param channelId               通知通道ID
-     * @param smallIcon               通知图标
-     * @param title                   通知标题
-     * @param content                 通知内容
-     * @param progress                当前进度大小
-     * @param size                    总进度大小
-     * @param isSupportCancelDownload 是否支持取消下载
+     * @param context                 context
+     * @param notifyId                Notification ID
+     * @param channelId               notification channel ID
+     * @param smallIcon               notification icon
+     * @param title                   Notification title
+     * @param content                 Notification content
+     * @param progress                Current progress size
+     * @param size                    total progress size
+     * @param isSupportCancelDownload whether to support canceling download
      */
     void onProgress(Context context, int notifyId, String channelId, @DrawableRes int smallIcon, CharSequence title, CharSequence content, int progress, int size, boolean isSupportCancelDownload);
 
     /**
-     * 完成
+     * Finish
      *
-     * @param context   上下文
-     * @param notifyId  通知ID
-     * @param channelId 通知通道ID
-     * @param smallIcon 通知图标
-     * @param title     通知标题
-     * @param content   通知内容
-     * @param file      APK文件
-     * @param authority 文件访问授权
+     * @param context   context
+     * @param notifyId  Notification ID
+     * @param channelId notification channel ID
+     * @param smallIcon notification icon
+     * @param title     Notification title
+     * @param content   Notification content
+     * @param file      APK file
+     * @param authority file access authorization
      */
     void onFinish(Context context, int notifyId, String channelId, @DrawableRes int smallIcon, CharSequence title, CharSequence content, File file, String authority);
 
     /**
-     * 错误
+     * mistake
      *
-     * @param context      上下文
-     * @param notifyId     通知ID
-     * @param channelId    通知通道ID
-     * @param smallIcon    通知图标
-     * @param title        通知标题
-     * @param content      通知内容
-     * @param isReDownload 是否重复下载
-     * @param config       配置
+     * @param context      context
+     * @param notifyId     Notification ID
+     * @param channelId    notification channel ID
+     * @param smallIcon    notification icon
+     * @param title        Notification title
+     * @param content      Notification content
+     * @param isReDownload whether to download repeatedly
+     * @param config       configuration
      */
     void onError(Context context, int notifyId, String channelId, @DrawableRes int smallIcon, CharSequence title, CharSequence content, boolean isReDownload, UpdateConfig config);
 
     /**
-     * 取消
+     * Cancel
      *
-     * @param context  上下文
-     * @param notifyId 通知ID
+     * @param context  context
+     * @param notifyId Notification ID
      */
     void onCancel(Context context, int notifyId);
 }

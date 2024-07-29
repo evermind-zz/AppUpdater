@@ -1,6 +1,7 @@
 package com.king.app.dialog;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -128,6 +129,10 @@ public class BaseDialogConfig {
      * Click the "OK" button to listen
      */
     View.OnClickListener onClickConfirm;
+    /**
+     * "Back" button listener
+     */
+    DialogInterface.OnDismissListener dismissListener;
 
     /**
      * Construction
@@ -750,5 +755,28 @@ public class BaseDialogConfig {
     public BaseDialogConfig setVerticalWeight(float verticalWeight) {
         this.verticalWeight = verticalWeight;
         return this;
+    }
+
+    /**
+     * Set the "Back" button click listener.
+     *
+     * This listener is only called if the dialog disappears by pushing the back button.
+     * It will NOT be called if the dialog is recreated (eg. rotation the device).
+     *
+     * @param dismissListener "Back" button click listener
+     * @return {@link BaseDialogConfig}
+     */
+    public BaseDialogConfig setOnDismissListener(DialogInterface.OnDismissListener dismissListener) {
+        this.dismissListener = dismissListener;
+        return this;
+    }
+
+    /**
+     * "Back" button click listener
+     *
+     * @return "Back" button click listener
+     */
+    public DialogInterface.OnDismissListener getOnDismissListener() {
+        return this.dismissListener;
     }
 }

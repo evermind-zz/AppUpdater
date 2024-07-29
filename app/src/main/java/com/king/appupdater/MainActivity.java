@@ -282,6 +282,13 @@ public class MainActivity extends AppCompatActivity {
         config.setTitle("Simple DialogFragment Upgrade")
                 .setConfirm("Upgrade")
                 .setContent("1. Add a new function, \n2. Fix a problem, \n3. Optimize a bug, ")
+                .setOnDismissListener(
+                        new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface dialog) {
+                                // dismiss the dialog
+                            }
+                        })
                 .setOnClickConfirm(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

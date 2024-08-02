@@ -65,9 +65,9 @@ AppUpdater for Android is a lightweight open source library that focuses on app 
    ```gradle
    //----------AndroidX version
    //app-updater
-   implementation 'com.github.jenly1314.AppUpdater:app-updater:1.2.0'
+   implementation 'com.github.evermind-zz.AppUpdater:app-updater:1.2.0-1.2.0'
    //app-dialog
-   implementation 'com.github.jenly1314.AppUpdater:app-dialog:1.2.0'
+   implementation 'com.github.evermind-zz.AppUpdater:app-dialog:1.2.0-1.2.0'
    ```
 
 ## Use
@@ -180,6 +180,14 @@ For more usage details, please check the source code usage examples in [app](app
 #### [compose-component](https://github.com/jenly1314/compose-component) A component library for Jetpack Compose; it mainly provides some small components for quick use.
 
 ## Version History
+#### v1.2.0-1.2.0: 2024-07-29
+* relay "Back" Buton pressed via onDismissListener for AppDialogFragment
+
+#### v1.2.0-1.1.0: 2024-07-29
+* enclose TextView with ScrollView (for dialog content)
+
+#### v1.2.0-1.0.0: 2024-07-25
+* translate README to english
 
 #### v1.2.0: 2023-7-9
 * Updated Gradle to v7.3.3
